@@ -27,6 +27,17 @@ namespace ProgParty.WieBetaaltWat
             this.InitializeComponent();
 
             this.NavigationCacheMode = NavigationCacheMode.Required;
+
+            
+
+            AppBarButton btnHome = new AppBarButton();
+            btnHome.Label = "Nieuwe invoer";
+            btnHome.Icon = new SymbolIcon(Symbol.Add);
+
+            this.CommandBar.PrimaryCommands.Add(btnHome);
+
+            btnHome.IsEnabled = true;
+            //< AppBarButton Label = "Nieuwe invoer" Icon = "Add" />
         }
 
         /// <summary>
@@ -71,6 +82,11 @@ namespace ProgParty.WieBetaaltWat
         }
 
         private void LoadMoreGalleries_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void AddListButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
