@@ -44,5 +44,35 @@ namespace ProgParty.WieBetaaltWat
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
         }
+
+        private void ComboBoxMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void BuyBarButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ContactButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void GalleryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void LoadMoreGalleries_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -6,23 +6,27 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="#353535"
-    Foreground="#ffffff">
+    Background="#60351D"
+    Foreground="#5c5b5b">
 
-        <Grid x:Name="LayoutRoot" Loaded="LayoutRoot_Loaded" Background="#353535" Margin="0">
+    <Grid x:Name="LayoutRoot" Loaded="LayoutRoot_Loaded" Background="#FAFAFA" Margin="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60" />
                 <RowDefinition />
                 <RowDefinition Height="auto" />
             </Grid.RowDefinitions>
 
-            <Image Stretch="UniformToFill" HorizontalAlignment="Center" Source="/Assets/header1.png"/>
+        <StackPanel Orientation="Horizontal" Background="#60351D">
+            <Image HorizontalAlignment="Left" Margin="30 5 0 5" Source="/Assets/logo-nl.png"/>
 
+            <TextBlock VerticalAlignment="Center" Foreground="White" FontSize="15" Margin="10 0 0 0" Text="Houd je gezamenlijke uitgaven overzichtelijk" />
+        </StackPanel>
+            
             <Pivot Name="searchPivot" Grid.Row="1">
                 <!--Pivot item one-->
                 <PivotItem Margin="0" Padding="0" Background="#f0f0f0" Foreground="Black">
                     <PivotItem.Header>
-                        <TextBlock Text="Overview" FontSize="30" Foreground="White" />
+                        <TextBlock Text="Mijn Lijsten" FontSize="30" Foreground="#5c5b5b" />
                     </PivotItem.Header>
 
                     <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch">
@@ -36,7 +40,7 @@
                                     </ListView.ItemContainerStyle>
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
-                                            <Grid Holding="Grid_Holding" HorizontalAlignment="Stretch" Background="{Binding Alternation.Background}">
+                                            <Grid HorizontalAlignment="Stretch" Background="{Binding Alternation.Background}">
                                                 <Border BorderThickness="1" BorderBrush="#b1c4df" >
                                                     <Grid x:Name="gridResult" Margin="10" >
                                                         <Grid.ColumnDefinitions>
@@ -53,11 +57,6 @@
                                                         </StackPanel>
                                                     </Grid>
                                                 </Border>
-                                                <FlyoutBase.AttachedFlyout>
-                                                    <MenuFlyout>
-                                                        <MenuFlyoutItem x:Name="ShareButton" Text="Share article..." Click="ShareButton_Click" />
-                                                    </MenuFlyout>
-                                                </FlyoutBase.AttachedFlyout>
                                             </Grid>
                                         </DataTemplate>
                                     </ListView.ItemTemplate>
@@ -77,7 +76,7 @@
                         </ScrollViewer>
 
                         <Grid Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-50,0,0">
-                            <ComboBox HorizontalAlignment="Right" Background="#353535" Foreground="White" x:Name="ComboBoxMenu" VerticalAlignment="Top" SelectionChanged="ComboBoxMenu_SelectionChanged">
+                            <ComboBox HorizontalAlignment="Right" Background="#60351D" Foreground="White" x:Name="ComboBoxMenu" VerticalAlignment="Top" SelectionChanged="ComboBoxMenu_SelectionChanged">
                                 <ComboBoxItem x:Name="All" Content="All" />
                                 <ComboBoxItem x:Name="Advertising" Content="Advertising"/>
                                 <ComboBoxItem x:Name="Animals" Content="Animals"/>
@@ -128,9 +127,9 @@
                     </Grid>
                 </PivotItem>
                 <!--Pivot item two-->
-                <PivotItem Background="#f0f0f0" Margin="0" Padding="0">
+                <PivotItem Background="#f0f0f0" Margin="0" Padding="0" Foreground="Black">
                     <PivotItem.Header>
-                        <TextBlock Text="Article" FontSize="30" Foreground="#f0f0f0"/>
+                        <TextBlock Text="Enkele lijst" FontSize="30" Foreground="#5c5b5b"/>
                     </PivotItem.Header>
                     <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch">
                         <ScrollViewer VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" HorizontalAlignment="Stretch">
@@ -144,11 +143,15 @@
             </Grid>
         </Grid>
         <Page.BottomAppBar>
-            <CommandBar>
+            <CommandBar Background="#60351D">
                 <CommandBar.PrimaryCommands>
-                    <AppBarButton Label="Purchase" Icon="Shop" Click="BuyBarButton_Click" />
+                    <AppBarButton Label="Koop" Icon="Shop" Click="BuyBarButton_Click" />
                     <AppBarButton Label="Contact" Icon="ContactInfo" Click="ContactButton_Click" />
-                </CommandBar.PrimaryCommands>
+                    <AppBarButton Label="Nieuwe lijst" Icon="Add" />
+                    <AppBarButton Label="Nieuwe invoer" Icon="Add" />
+            </CommandBar.PrimaryCommands>
+            <CommandBar.SecondaryCommands>
+            </CommandBar.SecondaryCommands>
             </CommandBar>
         </Page.BottomAppBar>
     </Page>

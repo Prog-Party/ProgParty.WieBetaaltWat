@@ -94,17 +94,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\banner_Jens_Dennis.png" />
-    <Content Include="Assets\foto_jens_dennis.png" />
-    <Content Include="Assets\foto_jens_dennis_mirror.png" />
-    <Content Include="Assets\icons\18_b.png" />
-    <Content Include="Assets\icons\18_w.png" />
     <Content Include="Assets\icons\advertisement.png" />
     <Content Include="Assets\icons\doc_b.png" />
     <Content Include="Assets\icons\doc_w.png" />
     <Content Include="Assets\icons\donation_b.png" />
     <Content Include="Assets\icons\donation_w.png" />
-    <Content Include="Assets\icons\girl.png" />
     <Content Include="Assets\icons\review.png" />
+    <Content Include="Assets\logo-nl.png" />
     <Content Include="Assets\Logo.scale-240.png" />
     <Content Include="Assets\sale.png" />
     <Content Include="Assets\SmallLogo.scale-240.png" />
