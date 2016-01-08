@@ -6,7 +6,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{538a8dee-5c24-429d-acef-7d7e23726e1a}</ProjectGuid>
+    <ProjectGuid>{538A8DEE-5C24-429D-ACEF-7D7E23726E1A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ProgParty.WieBetaaltWat.Api</RootNamespace>
@@ -79,11 +79,25 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Compile Include="Execute\LijstExecute.cs" />
+    <Compile Include="Execute\OverviewExecute.cs" />
+    <Compile Include="Extension\StringExtension.cs" />
+    <Compile Include="Parameter\LijstParameter.cs" />
+    <Compile Include="Parameter\OverviewParameter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result\LijstResult.cs" />
+    <Compile Include="Result\OverviewResult.cs" />
+    <Compile Include="Scrape\LijstScrape.cs" />
+    <Compile Include="Scrape\OverviewScrape.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid+MonoTouch\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">
     <VisualStudioVersion>12.0</VisualStudioVersion>
@@ -99,5 +113,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-
 </Project>
