@@ -29,9 +29,7 @@
                 <!--<TextBlock FontSize="20" TextAlignment="Center">Support ons</TextBlock>-->
                 <!--<TextBlock Margin="0,5,0,5" FontSize="13" TextWrapping="Wrap">By buying you do not only get something really great for yourself. You also support two dudes that are working day and night non-profit. We are here to give you a super duper awesome app.</TextBlock>-->
                 <TextBlock Margin="0,5,0,5" FontSize="13" TextWrapping="Wrap">
-                	<Run Text="Door een aankoop te doen krijg je niet alleen iets tofs voor jezelf, je ondersteunt ook twee dudes die zonder winstoogmerk keihard aan het werk zijn om een super duper te gekke "/>
-                	<Run Text="WieBetaaltWat"/>
-                	<Run Text=" app aan het maken zijn."/>
+                	<Run Text="Door een aankoop te doen krijg je niet alleen iets tofs voor jezelf, je ondersteunt ook twee dudes die zonder winstoogmerk keihard aan het werk zijn om een super duper te gekke WieBetaaltWat app aan het maken zijn."/>
                 </TextBlock>
                 <Grid Margin="0,15,0,0">
                     <Grid.ColumnDefinitions>
