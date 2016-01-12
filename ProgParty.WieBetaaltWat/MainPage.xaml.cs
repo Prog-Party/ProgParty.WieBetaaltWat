@@ -91,11 +91,6 @@ namespace ProgParty.WieBetaaltWat
             Frame.Navigate(typeof(Core.Pages.Shop));
         }
 
-        private void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void GalleryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
