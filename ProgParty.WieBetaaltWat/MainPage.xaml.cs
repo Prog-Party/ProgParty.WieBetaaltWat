@@ -37,10 +37,10 @@ namespace ProgParty.WieBetaaltWat
                 Ad = new ConfigAd()
                 {
                     AdHolder = AdHolder,
-                    AdApplicationId = "",
-                    SmallAdUnitId = "",
-                    MediumAdUnitId = "",
-                    LargeAdUnitId = ""
+                    AdApplicationId = "de76f64c-70b2-49d7-99b6-924257121127",
+                    SmallAdUnitId = "11569201",
+                    MediumAdUnitId = "11569200",
+                    LargeAdUnitId = "11569199"
                 }
             };
 
