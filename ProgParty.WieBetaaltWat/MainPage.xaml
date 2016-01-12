@@ -138,7 +138,7 @@
                             <TextBlock x:Name="Omschrijving" Text="Omschrijving" Foreground="#222222"/>
                             <TextBlock x:Name="Bedrag" Text="Bedrag" Foreground="#222222"/>
                             <TextBlock x:Name="Datum" Text="Datum" Foreground="#222222"/>
-                            <TextBlock x:Name="Mee-eters" Text="Mee-eters" Foreground="#222222"/>
+                            <TextBlock x:Name="Meeeters" Text="Mee-eters" Foreground="#222222"/>
                         </StackPanel>
                     </ScrollViewer>
                     </Grid>
@@ -153,6 +153,7 @@
                     <AppBarButton x:Name="BuyBarButton" Label="Koop" Icon="Shop" Click="BuyBarButton_Click" />
                     <AppBarButton x:Name="ContactButton" Label="Contact" Icon="ContactInfo" Click="ContactButton_Click" />
                     <AppBarButton x:Name="AddListButton" Label="Nieuwe lijst" Icon="Add" Click="AddListButton_Click" />
+                <AppBarButton x:Name="ConfigButton" Label="Configuratie" Icon="Setting" Click="SettingsButton_Click" />
             </CommandBar.PrimaryCommands>
             <CommandBar.SecondaryCommands>
             </CommandBar.SecondaryCommands>

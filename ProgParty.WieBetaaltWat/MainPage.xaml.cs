@@ -1,8 +1,10 @@
-﻿using System;
+﻿using ProgParty.Core;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.ApplicationModel.Store;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -26,9 +28,33 @@ namespace ProgParty.WieBetaaltWat
         {
             this.InitializeComponent();
 
-            this.NavigationCacheMode = NavigationCacheMode.Required;
+            NavigationCacheMode = NavigationCacheMode.Required;
 
-            
+            Config.Instance = new Config(this)
+            {
+                Pivot = searchPivot,
+                AppName = "WieBetaaltWat",
+                Ad = new ConfigAd()
+                {
+                    AdHolder = AdHolder,
+                    AdApplicationId = "",
+                    SmallAdUnitId = "",
+                    MediumAdUnitId = "",
+                    LargeAdUnitId = ""
+                }
+            };
+
+#if DEBUG
+            Core.Config.Instance.LicenseInformation = CurrentAppSimulator.LicenseInformation;
+#else
+            Core.Config.Instance.LicenseInformation = CurrentApp.LicenseInformation;
+#endif
+
+            Core.License.LicenseInfo.SetLicenseInformation();
+
+            Register.Execute();
+
+
 
             AppBarButton btnHome = new AppBarButton();
             btnHome.Label = "Nieuwe invoer";
@@ -61,14 +87,14 @@ namespace ProgParty.WieBetaaltWat
 
         }
 
-        private void BuyBarButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void ContactButton_Click(object sender, RoutedEventArgs e)
         {
+            Frame.Navigate(typeof(Core.Pages.Contact));
+        }
 
+        private void BuyBarButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Core.Pages.Shop));
         }
 
         private void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
@@ -89,6 +115,11 @@ namespace ProgParty.WieBetaaltWat
         private void AddListButton_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Settings));
         }
     }
 }
