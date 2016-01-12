@@ -66,20 +66,14 @@ namespace ProgParty.WieBetaaltWat
             //< AppBarButton Label = "Nieuwe invoer" Icon = "Add" />
         }
 
-        /// <summary>
-        /// Invoked when this page is about to be displayed in a Frame.
-        /// </summary>
-        /// <param name="e">Event data that describes how this page was reached.
-        /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            // TODO: Prepare page for display here.
+            Register.RegisterOnNavigatedTo(Config.Instance.LicenseInformation);
+        }
 
-            // TODO: If your application contains multiple pages, ensure that you are
-            // handling the hardware Back button by registering for the
-            // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
-            // If you are using the NavigationHelper provided by some templates,
-            // this event is handled for you.
+        private void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
+        {
+            Register.RegisterOnLoaded();
         }
 
         private void ComboBoxMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
