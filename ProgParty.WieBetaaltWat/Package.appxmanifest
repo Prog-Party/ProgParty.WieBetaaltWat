@@ -15,8 +15,8 @@
     <Resource Language="x-generate" />
   </Resources>
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ProgParty.WieBetaaltWat.Phone.App">
-      <m3:VisualElements DisplayName="WieBetaaltWat" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="ProgParty.WieBetaaltWat.Phone" ForegroundText="light" BackgroundColor="transparent">
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="ProgParty.WieBetaaltWat.Phone">
+      <m3:VisualElements DisplayName="WieBetaaltWat" Square150x150Logo="Assets\Logo.png" Square44x44Logo="Assets\SmallLogo.png" Description="Met deze app kun je bijhouden van je gezamenlijke uitgaven. Iedere deelnemer kan zelf eigen uitgaven voor de groep verrekenen met de anderen en in een oogopslag zien wat de balans is tussen de deelnemers" ForegroundText="light" BackgroundColor="transparent" ToastCapable="true">
         <m3:DefaultTile Wide310x150Logo="Assets\WideLogo.png" Square71x71Logo="Assets\Square71x71Logo.png">
         </m3:DefaultTile>
         <m3:SplashScreen Image="Assets\SplashScreen.png" />
