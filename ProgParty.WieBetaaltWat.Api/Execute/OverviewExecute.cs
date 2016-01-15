@@ -1,8 +1,8 @@
-﻿using ProgParty.BoredPanda.Api.Result;
-using ProgParty.BoredPanda.Api.Scrape;
+﻿using ProgParty.WieBetaaltWat.Api.Result;
+using ProgParty.WieBetaaltWat.Api.Scrape;
 using System.Collections.Generic;
 
-namespace ProgParty.BoredPanda.Api.Execute
+namespace ProgParty.WieBetaaltWat.Api.Execute
 {
     public class OverviewExecute
     {

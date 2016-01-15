@@ -10,129 +10,79 @@
     Foreground="#5c5b5b">
 
     <Grid x:Name="LayoutRoot" Loaded="LayoutRoot_Loaded" Background="#FAFAFA" Margin="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="60" />
-                <RowDefinition />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
 
         <StackPanel Orientation="Horizontal" Background="#60351D">
             <Image HorizontalAlignment="Left" Margin="30 5 0 5" Source="/Assets/logo-nl.png"/>
 
             <TextBlock VerticalAlignment="Center" FontWeight="Bold" Foreground="White" FontSize="14" Margin="10 0 0 0" Text="Houd je gezamenlijke uitgaven overzichtelijk" />
         </StackPanel>
-            
-            <Pivot Name="searchPivot" Grid.Row="1">
-                <!--Pivot item one-->
-                <PivotItem Margin="0" Padding="0" Background="#f0f0f0" Foreground="Black">
-                    <PivotItem.Header>
-                        <TextBlock Text="Mijn Lijsten" FontSize="30" Foreground="#5c5b5b" />
-                    </PivotItem.Header>
 
-                    <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch">
-                        <ScrollViewer Margin="0,0,0,0" VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" HorizontalAlignment="Stretch">
-                            <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,0,40" >
-                                <ListView Name="galleryList" SelectionMode="Single" SelectionChanged="GalleryList_SelectionChanged" ItemsSource="{Binding Path=Gallery}" HorizontalAlignment="Stretch">
-                                    <ListView.ItemContainerStyle>
-                                        <Style TargetType="ListViewItem">
-                                            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
-                                        </Style>
-                                    </ListView.ItemContainerStyle>
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <Grid HorizontalAlignment="Stretch" Background="{Binding Alternation.Background}">
-                                                <Border BorderThickness="1" BorderBrush="#b1c4df" >
-                                                    <Grid x:Name="gridResult" Margin="10" >
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition Width="120" />
-                                                            <ColumnDefinition Width="*" />
-                                                        </Grid.ColumnDefinitions>
+        <Pivot Name="searchPivot" Grid.Row="1">
+            <!--Pivot item one-->
+            <PivotItem Margin="0" Padding="0" Background="#f0f0f0" Foreground="Black">
+                <PivotItem.Header>
+                    <TextBlock Text="Mijn Lijsten" FontSize="30" Foreground="#5c5b5b" />
+                </PivotItem.Header>
 
-                                                        <Image Grid.Column="0" Source="{Binding ImageUrl}" />
+                <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch">
+                    <ScrollViewer Margin="0" VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" HorizontalAlignment="Stretch">
+                        <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,0,40" >
+                            <ListView Name="galleryList" SelectionMode="Single" SelectionChanged="GalleryList_SelectionChanged" ItemsSource="{Binding Path=Gallery}" HorizontalAlignment="Stretch">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid HorizontalAlignment="Stretch" Background="{Binding Alternation.Background}">
+                                            <Border BorderThickness="1" BorderBrush="#b1c4df" >
+                                                <Grid x:Name="gridResult" Margin="10" >
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="120" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
 
-                                                        <StackPanel Margin="10,0" Grid.Column="1" Orientation="Vertical">
+                                                    <Image Grid.Column="0" Source="{Binding ImageUrl}" />
 
-                                                            <TextBlock FontWeight="Bold" Text="{Binding Title}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                                            <TextBlock Text="{Binding SubTitle}" FontSize="9" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                                        </StackPanel>
-                                                    </Grid>
-                                                </Border>
-                                            </Grid>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
+                                                    <StackPanel Margin="10,0" Grid.Column="1" Orientation="Vertical">
 
-                                <StackPanel Margin="0,0,0,15" Orientation="Vertical" Visibility="{Binding Path=GalleryItemsLoadingVisibility}">
-                                    <ProgressRing IsActive="True" Margin="50" Background="#f0f0f0"/>
-                                </StackPanel>
+                                                        <TextBlock FontWeight="Bold" Text="{Binding Title}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                                        <TextBlock Text="{Binding SubTitle}" FontSize="9" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                                    </StackPanel>
+                                                </Grid>
+                                            </Border>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
 
-                                <StackPanel Orientation="Vertical">
-                                    <Border HorizontalAlignment="Center" Margin="0,40,0,0" >
-                                    <Button Height="80" HorizontalAlignment="Stretch" Click="LoadMoreGalleries_Click" Background="#60351d" Foreground="White" BorderBrush="Black" BorderThickness="2" Content="Meer betalingen laden" Width="260" Padding="25,10,25,10" />
-                                    </Border>
-                                </StackPanel>
-
+                            <StackPanel Margin="0,0,0,15" Orientation="Vertical" Visibility="{Binding Path=GalleryItemsLoadingVisibility}">
+                                <ProgressRing IsActive="True" Margin="50" Background="#f0f0f0"/>
                             </StackPanel>
-                        </ScrollViewer>
 
-                        <Grid Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-50,0,0">
-                            <ComboBox HorizontalAlignment="Right" Background="#60351D" Foreground="White" x:Name="ComboBoxMenu" VerticalAlignment="Top" SelectionChanged="ComboBoxMenu_SelectionChanged">
-                                <ComboBoxItem x:Name="All" Content="All" />
-                                <ComboBoxItem x:Name="Advertising" Content="Advertising"/>
-                                <ComboBoxItem x:Name="Animals" Content="Animals"/>
-                                <ComboBoxItem x:Name="Architecture" Content="Architecture"/>
-                                <ComboBoxItem x:Name="Art" Content="Art"/>
-                                <ComboBoxItem x:Name="Automotive" Content="Automotive"/>
-                                <ComboBoxItem x:Name="BodyArt" Content="Body Art"/>
-                                <ComboBoxItem x:Name="Comics" Content="Comics"/>
-                                <ComboBoxItem x:Name="DigitalArt" Content="Digital Art"/>
-                                <ComboBoxItem x:Name="DIY" Content="DIY"/>
-                                <ComboBoxItem x:Name="Drawing" Content="Drawing"/>
-                                <ComboBoxItem x:Name="Entertainment" Content="Entertainment"/>
-                                <ComboBoxItem x:Name="FoodArt" Content="Food Art"/>
-                                <ComboBoxItem x:Name="Funny" Content="Funny"/>
-                                <ComboBoxItem x:Name="FurnitureDesign" Content="Furniture Design"/>
-                                <ComboBoxItem x:Name="GoodNews" Content="Good News"/>
-                                <ComboBoxItem x:Name="GraphicDesign" Content="Graphic Design"/>
-                                <ComboBoxItem x:Name="History" Content="History"/>
-                                <ComboBoxItem x:Name="Home" Content="Home"/>
-                                <ComboBoxItem x:Name="Illustration" Content="Illustration"/>
-                                <ComboBoxItem x:Name="Installation" Content="Installation"/>
-                                <ComboBoxItem x:Name="InteriorDesign" Content="Interior Design"/>
-                                <ComboBoxItem x:Name="LandArt" Content="Land Art"/>
-                                <ComboBoxItem x:Name="Nature" Content="Nature"/>
-                                <ComboBoxItem x:Name="NeedleAndThread" Content="Needle and Thread"/>
-                                <ComboBoxItem x:Name="OpticalIllusions" Content="Optical Illusions"/>
-                                <ComboBoxItem x:Name="Other" Content="Other"/>
-                                <ComboBoxItem x:Name="Packaging" Content="Packaging"/>
-                                <ComboBoxItem x:Name="Painting" Content="Painting"/>
-                                <ComboBoxItem x:Name="PaperArt" Content="Paper Art"/>
-                                <ComboBoxItem x:Name="Parenting" Content="Parenting"/>
-                                <ComboBoxItem x:Name="Photography" Content="Photography"/>
-                                <ComboBoxItem x:Name="Pics" Content="Pics"/>
-                                <ComboBoxItem x:Name="ProductDesign" Content="Product Design"/>
-                                <ComboBoxItem x:Name="Recycling" Content="Recycling"/>
-                                <ComboBoxItem x:Name="Science" Content="Science"/>
-                                <ComboBoxItem x:Name="Sculpting" Content="Sculpting"/>
-                                <ComboBoxItem x:Name="SocialIssues" Content="Social Issues"/>
-                                <ComboBoxItem x:Name="StreetArt" Content="Street Art"/>
-                                <ComboBoxItem x:Name="Style" Content="Style"/>
-                                <ComboBoxItem x:Name="Technology" Content="Technology"/>
-                                <ComboBoxItem x:Name="Travel" Content="Travel"/>
-                                <ComboBoxItem x:Name="Typography" Content="Typography"/>
-                                <ComboBoxItem x:Name="Video" Content="Video"/>
-                                <ComboBoxItem x:Name="Weird" Content="Weird"/>
-                            </ComboBox>
-                        </Grid>
-                    </Grid>
-                </PivotItem>
-                <!--Pivot item two-->
-                <PivotItem Background="#f0f0f0" Margin="0" Padding="0" Foreground="Black">
-                    <PivotItem.Header>
-                        <TextBlock Text="Enkele lijst" FontSize="30" Foreground="#5c5b5b"/>
-                    </PivotItem.Header>
-                    <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch">
-                        <ScrollViewer VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" HorizontalAlignment="Stretch">
+                            <StackPanel Orientation="Vertical">
+                                <Border HorizontalAlignment="Center" Margin="0,40,0,0" >
+                                    <Button Height="80" HorizontalAlignment="Stretch" Click="LoadMoreGalleries_Click" Background="#60351d" Foreground="White" BorderBrush="Black" BorderThickness="2" Content="Meer betalingen laden" Width="260" Padding="25,10,25,10" />
+                                </Border>
+                            </StackPanel>
+
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </PivotItem>
+            <!--Pivot item two-->
+            <PivotItem Background="#f0f0f0" Margin="0" Padding="0" Foreground="Black">
+                <PivotItem.Header>
+                    <TextBlock Text="Enkele lijst" FontSize="30" Foreground="#5c5b5b"/>
+                </PivotItem.Header>
+                <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch">
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" HorizontalAlignment="Stretch">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="10" >
                             <TextBlock x:Name="Betaler" Text="Betaler" Foreground="#222222"/>
                             <TextBlock x:Name="Omschrijving" Text="Omschrijving" Foreground="#222222"/>
@@ -141,22 +91,22 @@
                             <TextBlock x:Name="Meeeters" Text="Mee-eters" Foreground="#222222"/>
                         </StackPanel>
                     </ScrollViewer>
-                    </Grid>
-                </PivotItem>
-            </Pivot>
-            <Grid Grid.Row="2" Name="AdHolder">
-            </Grid>
+                </Grid>
+            </PivotItem>
+        </Pivot>
+        <Grid Grid.Row="2" Name="AdHolder" Margin="0">
         </Grid>
-        <Page.BottomAppBar>
-            <CommandBar x:Name="CommandBar" Background="#60351D">
-                <CommandBar.PrimaryCommands>
-                    <AppBarButton x:Name="BuyBarButton" Label="Koop" Icon="Shop" Click="BuyBarButton_Click" />
-                    <AppBarButton x:Name="ContactButton" Label="Contact" Icon="ContactInfo" Click="ContactButton_Click" />
-                    <AppBarButton x:Name="AddListButton" Label="Nieuwe lijst" Icon="Add" Click="AddListButton_Click" />
+    </Grid>
+    <Page.BottomAppBar>
+        <CommandBar x:Name="CommandBar" Background="#60351D">
+            <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="BuyBarButton" Label="Koop" Icon="Shop" Click="BuyBarButton_Click" />
+                <AppBarButton x:Name="ContactButton" Label="Contact" Icon="ContactInfo" Click="ContactButton_Click" />
+                <AppBarButton x:Name="AddListButton" Label="Nieuwe lijst" Icon="Add" Click="AddListButton_Click" />
                 <AppBarButton x:Name="ConfigButton" Label="Configuratie" Icon="Setting" Click="SettingsButton_Click" />
             </CommandBar.PrimaryCommands>
             <CommandBar.SecondaryCommands>
             </CommandBar.SecondaryCommands>
-            </CommandBar>
-        </Page.BottomAppBar>
-    </Page>
+        </CommandBar>
+    </Page.BottomAppBar>
+</Page>

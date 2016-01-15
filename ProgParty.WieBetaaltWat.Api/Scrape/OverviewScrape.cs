@@ -1,11 +1,10 @@
 ﻿using HtmlAgilityPack;
-using ProgParty.BoredPanda.Api.Result;
-using System;
+using ProgParty.WieBetaaltWat.Api.Result;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 
-namespace ProgParty.BoredPanda.Api.Scrape
+namespace ProgParty.WieBetaaltWat.Api.Scrape
 {
     internal class OverviewScrape
     {
@@ -22,7 +21,7 @@ namespace ProgParty.BoredPanda.Api.Scrape
 
             using (HttpClient client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Host = "www.boredpanda.com";
+                client.DefaultRequestHeaders.Host = "www.wiebetaaltwat.nl";
                 client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36");
                 //client.DefaultRequestHeaders.Add("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8");
 
@@ -33,7 +32,7 @@ namespace ProgParty.BoredPanda.Api.Scrape
             }
         }
 
-        public string ConstructUrl() => $"http://www.boredpanda.com{GetBaseUrl()}/page/{Parameters.Paging}";
+        public string ConstructUrl() => $"http://www.wiebetaaltwat.nl{GetBaseUrl()}/page/{Parameters.Paging}";
 
         private string GetBaseUrl()
         {

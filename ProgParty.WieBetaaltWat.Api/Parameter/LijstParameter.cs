@@ -1,4 +1,4 @@
-﻿namespace ProgParty.BoredPanda.Api.Parameter
+﻿namespace ProgParty.WieBetaaltWat.Api.Parameter
 {
     public class ArticleParameter
     {

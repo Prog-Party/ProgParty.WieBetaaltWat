@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ProgParty.BoredPanda.Api.Result
+namespace ProgParty.WieBetaaltWat.Api.Result
 {
     public class ArticleResult
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ProgParty.BoredPanda.Api.Result
+namespace ProgParty.WieBetaaltWat.Api.Result
 {
     public class OverviewResult
     {

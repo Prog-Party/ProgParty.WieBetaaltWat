@@ -1,10 +1,10 @@
 ﻿using HtmlAgilityPack;
-using ProgParty.BoredPanda.Api.Result;
+using ProgParty.WieBetaaltWat.Api.Result;
 using ProgParty.Core.Extension;
 using System.Linq;
 using System.Net.Http;
 
-namespace ProgParty.BoredPanda.Api.Scrape
+namespace ProgParty.WieBetaaltWat.Api.Scrape
 {
     internal class LijstScrape
     {

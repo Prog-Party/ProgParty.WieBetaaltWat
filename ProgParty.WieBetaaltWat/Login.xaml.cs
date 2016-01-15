@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProgParty.Core.Storage;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -20,14 +21,14 @@ namespace ProgParty.WieBetaaltWat
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class Settings : Page
+    public sealed partial class Login : Page
     {
-        public Settings()
+        public Login()
         {
             this.InitializeComponent();
 
             ConfigButton.IsEnabled = false;
-            AddListButton.IsEnabled = false;
+            //AddListButton.IsEnabled = false;
         }
 
         /// <summary>
@@ -39,9 +40,42 @@ namespace ProgParty.WieBetaaltWat
         {
         }
 
+        public void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
+        {
+            var storage = new Storage();
+            string loggedInName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString();
+
+            if (string.IsNullOrEmpty(loggedInName))
+                LoggedInNamePanel.Visibility = Visibility.Collapsed;
+            else
+            {
+                LoginTextBox.Text = loggedInName;
+                CurrentlyLoggedInName.Text = loggedInName;
+                LoggedInNamePanel.Visibility = Visibility.Visible;
+            }
+        }
+
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
+            string email = LoginTextBox.Text;
+            string password = PasswordTextBox.Password;
 
+            //do login, if worked, save email and password
+            var loginScrape = new Api.Authentication.LoginScrape(email, password);
+            bool isLoggedIn = loginScrape.Execute();
+            if (isLoggedIn)
+            {
+                var storage = new Storage();
+                storage.StoreInLocal(StorageKeys.LoggedInName, email);
+                storage.StoreInLocal(StorageKeys.LoggedInPassword, password);
+
+                Frame.Navigate(typeof(MainPage));
+            }
+            else
+            {
+                //show message
+                ErrorMessage.Visibility = Visibility.Visible;
+            }
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)

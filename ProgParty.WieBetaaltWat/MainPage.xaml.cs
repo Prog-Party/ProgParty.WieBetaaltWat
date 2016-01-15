@@ -1,4 +1,5 @@
 ﻿using ProgParty.Core;
+using ProgParty.Core.Storage;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -54,8 +55,6 @@ namespace ProgParty.WieBetaaltWat
 
             Register.Execute();
 
-
-
             AppBarButton btnHome = new AppBarButton();
             btnHome.Label = "Nieuwe invoer";
             btnHome.Icon = new SymbolIcon(Symbol.Add);
@@ -64,7 +63,37 @@ namespace ProgParty.WieBetaaltWat
 
             btnHome.IsEnabled = true;
             //< AppBarButton Label = "Nieuwe invoer" Icon = "Add" />
+            
+            RedirectPageForLoggedin();
         }
+
+        private void RedirectPageForLoggedin()
+        {
+
+            if (Api.Auth.IsLoggedIn)
+                return;
+
+            var storage = new Storage();
+
+            string loggedInName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString() ?? string.Empty;
+            string loggedInPassword = storage.LoadFromLocal(StorageKeys.LoggedInPassword)?.ToString() ?? string.Empty;
+
+            if (string.IsNullOrEmpty(loggedInName) || string.IsNullOrEmpty(loggedInPassword))
+            {
+                Frame.Navigate(typeof(Login));
+                return;
+            }
+
+            var loginScrape = new Api.Authentication.LoginScrape(loggedInName, loggedInPassword);
+            bool isLoggedIn = loginScrape.Execute();
+
+            if (!isLoggedIn)
+            {
+                Frame.Navigate(typeof(Login));
+                return;
+            }
+        }
+
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -108,7 +137,7 @@ namespace ProgParty.WieBetaaltWat
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Settings));
+            Frame.Navigate(typeof(Login));
         }
     }
 }
