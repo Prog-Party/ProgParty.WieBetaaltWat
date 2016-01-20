@@ -32,7 +32,7 @@
                 <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch">
                     <ScrollViewer Margin="0" VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" HorizontalAlignment="Stretch">
                         <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,0,40" >
-                            <ListView Name="galleryList" SelectionMode="Single" SelectionChanged="GalleryList_SelectionChanged" ItemsSource="{Binding Path=Gallery}" HorizontalAlignment="Stretch">
+                            <ListView Name="galleryList" SelectionMode="Single" SelectionChanged="GalleryList_SelectionChanged" ItemsSource="{Binding Path=Lijsten}" HorizontalAlignment="Stretch">
                                 <ListView.ItemContainerStyle>
                                     <Style TargetType="ListViewItem">
                                         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -102,7 +102,7 @@
             <CommandBar.PrimaryCommands>
                 <AppBarButton x:Name="BuyBarButton" Label="Koop" Icon="Shop" Click="BuyBarButton_Click" />
                 <AppBarButton x:Name="ContactButton" Label="Contact" Icon="ContactInfo" Click="ContactButton_Click" />
-                <AppBarButton x:Name="AddListButton" Label="Nieuwe lijst" Icon="Add" Click="AddListButton_Click" />
+                <!--<AppBarButton x:Name="AddListButton" Label="Nieuwe lijst" Icon="Add" Click="AddListButton_Click" />-->
                 <AppBarButton x:Name="ConfigButton" Label="Configuratie" Icon="Setting" Click="SettingsButton_Click" />
             </CommandBar.PrimaryCommands>
             <CommandBar.SecondaryCommands>

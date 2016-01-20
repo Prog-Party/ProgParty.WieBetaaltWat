@@ -4,15 +4,15 @@ namespace ProgParty.WieBetaaltWat.Api.Result
 {
     public class OverviewResult
     {
-        public string Title { get; set; }
-        public string SubTitle { get; set; }
-        public string Url { get; set; }
-        public string ImageUrl { get; set; }
-        public int Index { get; set; }
+        public string ListName { get; internal set; }
+        public string ListUrl { get; internal set; }
+        public string MyBalance { get; internal set; }
+        public string HighBalance { get; internal set; }
+        public string LowBalance { get; internal set; }
 
         public override string ToString()
         {
-            return Title;
+            return ListName;
         }
     }
 }

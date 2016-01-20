@@ -1,8 +1,7 @@
 ﻿namespace ProgParty.WieBetaaltWat.Api.Parameter
 {
-    public class ArticleParameter
+    public class LijstParameter
     {
         public string Url { get; set; }
-        public ArticleCategory Type { get; set; }
     }
 }

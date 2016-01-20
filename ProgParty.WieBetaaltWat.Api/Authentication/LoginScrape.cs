@@ -12,6 +12,8 @@ namespace ProgParty.WieBetaaltWat.Api.Authentication
         private string Email { get; set; }
         private string Password { get; set; }
 
+        public string HtmlContent { get; private set; }
+
         public LoginScrape(string email, string password)
         {
             Email = email;
@@ -83,13 +85,16 @@ namespace ProgParty.WieBetaaltWat.Api.Authentication
 
                         var success = loginError == null;
                         if (success)
+                        {
                             Auth.IsLoggedIn = true;
+                            //get list with details 
+                            HtmlContent = htmlContent;
+                        }
 
                         return success;
                     }
                 }
             }
-
             return false;
         }
     }

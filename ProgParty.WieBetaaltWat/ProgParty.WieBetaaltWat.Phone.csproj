@@ -97,6 +97,7 @@
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
     <Compile Include="StorageKeys.cs" />
+    <Compile Include="WieBetaaltWatDataContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">

@@ -1,5 +1,6 @@
 ﻿using ProgParty.Core;
 using ProgParty.Core.Storage;
+using ProgParty.WieBetaaltWat.Api.Execute;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -25,6 +26,7 @@ namespace ProgParty.WieBetaaltWat
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public WieBetaaltWatDataContext PageDataContext { get; set; }
         public MainPage()
         {
             this.InitializeComponent();
@@ -55,21 +57,23 @@ namespace ProgParty.WieBetaaltWat
 
             Register.Execute();
 
-            AppBarButton btnHome = new AppBarButton();
-            btnHome.Label = "Nieuwe invoer";
-            btnHome.Icon = new SymbolIcon(Symbol.Add);
+            PageDataContext = new WieBetaaltWatDataContext();
+            DataContext = PageDataContext;
 
-            this.CommandBar.PrimaryCommands.Add(btnHome);
 
-            btnHome.IsEnabled = true;
+
+            //AppBarButton btnHome = new AppBarButton();
+            //btnHome.Label = "Nieuwe invoer";
+            //btnHome.Icon = new SymbolIcon(Symbol.Add);
+
+            //this.CommandBar.PrimaryCommands.Add(btnHome);
+
+            //btnHome.IsEnabled = true;
             //< AppBarButton Label = "Nieuwe invoer" Icon = "Add" />
-            
-            RedirectPageForLoggedin();
         }
 
         private void RedirectPageForLoggedin()
         {
-
             if (Api.Auth.IsLoggedIn)
                 return;
 
@@ -93,23 +97,31 @@ namespace ProgParty.WieBetaaltWat
                 return;
             }
         }
-
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            Register.RegisterOnNavigatedTo(Config.Instance.LicenseInformation);
-        }
-
+        
+        protected override void OnNavigatedTo(NavigationEventArgs e) => Register.RegisterOnNavigatedTo(Config.Instance.LicenseInformation);
+        
         private void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
         {
+            RedirectPageForLoggedin();
+
+            ShowMyLists();
+
             Register.RegisterOnLoaded();
         }
 
-        private void ComboBoxMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ShowMyLists()
         {
+            var storage = new Storage();
+            var param = new Api.Parameter.OverviewParameter();
+            param.LoginName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString() ?? string.Empty;
+            param.LoginPassword = storage.LoadFromLocal(StorageKeys.LoggedInPassword)?.ToString() ?? string.Empty;
 
+            OverviewExecute overview = new OverviewExecute() { Parameters = param };
+            overview.Execute();
+            
+            var result = overview.Result;
         }
-
+        
         private void ContactButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Core.Pages.Contact));

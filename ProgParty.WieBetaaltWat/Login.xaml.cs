@@ -28,6 +28,7 @@ namespace ProgParty.WieBetaaltWat
             this.InitializeComponent();
 
             ConfigButton.IsEnabled = false;
+
             //AddListButton.IsEnabled = false;
         }
 

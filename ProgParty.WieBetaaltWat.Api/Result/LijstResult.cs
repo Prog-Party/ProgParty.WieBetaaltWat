@@ -2,14 +2,12 @@
 
 namespace ProgParty.WieBetaaltWat.Api.Result
 {
-    public class ArticleResult
+    public class LijstResult
     {
-        public string Url { get; set; }
-
-        public List<string> ImageUrls { get; set; } 
-        public string Title { get; internal set; }
-        public string Content { get; internal set; }
-        public string ViewsCount { get; internal set; }
-        public string AuthorTime { get; internal set; }
+        public string ListName { get; internal set; }
+        public string ListUrl { get; internal set; }
+        public double MyBalance{ get; internal set; }
+        public double HighBalance { get; internal set; }
+        public double LowBalance { get; internal set; }
     }
 }
