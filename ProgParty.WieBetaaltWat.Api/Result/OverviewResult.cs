@@ -28,7 +28,7 @@ namespace ProgParty.WieBetaaltWat.Api.Result
                 return projectId;
             }
         }
-        internal string ProjectIds
+        internal string ProjectIdsss
         {
             get
             {
