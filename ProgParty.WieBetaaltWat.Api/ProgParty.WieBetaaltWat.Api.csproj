@@ -81,14 +81,22 @@
   <ItemGroup>
     <Compile Include="Auth.cs" />
     <Compile Include="Authentication\LoginScrape.cs" />
+    <Compile Include="Execute\InvoerItemPostExecute.cs" />
+    <Compile Include="Execute\InvoerItemExecute.cs" />
     <Compile Include="Execute\LijstExecute.cs" />
     <Compile Include="Execute\OverviewExecute.cs" />
     <Compile Include="Extension\StringExtension.cs" />
+    <Compile Include="Parameter\InvoerItemParameterPost.cs" />
+    <Compile Include="Parameter\InvoerItemParameter.cs" />
     <Compile Include="Parameter\LijstParameter.cs" />
     <Compile Include="Parameter\OverviewParameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result\InvoerItemGetResult.cs" />
+    <Compile Include="Result\InvoerItemPostResult.cs" />
     <Compile Include="Result\LijstResult.cs" />
     <Compile Include="Result\OverviewResult.cs" />
+    <Compile Include="Scrape\InvoerItemScrapePost.cs" />
+    <Compile Include="Scrape\InvoerItemScrape.cs" />
     <Compile Include="Scrape\LijstScrape.cs" />
     <Compile Include="Scrape\OverviewScrape.cs" />
   </ItemGroup>
