@@ -3,6 +3,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using Windows.UI.Xaml;
+using System;
+using System.Collections.Generic;
 
 namespace ProgParty.WieBetaaltWat
 {
@@ -21,7 +23,7 @@ namespace ProgParty.WieBetaaltWat
                 OnPropertyChanged("GalleryItemsLoadingVisibility");
             }
         }
-        //public Visibility GalleryItemsLoadingVisibility => GalleryItemsLoading ? Visibility.Visible : Visibility.Collapsed;
+        public Visibility GalleryItemsLoadingVisibility => GalleryItemsLoading ? Visibility.Visible : Visibility.Collapsed;
 
         //public int GalleryItemIndex = 0;
         //public int SelectedGallery = 0;
@@ -85,5 +87,13 @@ namespace ProgParty.WieBetaaltWat
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
         }
         public event PropertyChangedEventHandler PropertyChanged;
+
+        internal void SetResult(List<OverviewResult> result)
+        {
+            Lijsten.Clear();
+            foreach (var singleResult in result)
+                Lijsten.Add(singleResult);
+            GalleryItemsLoading = false;
+        }
     }
 }

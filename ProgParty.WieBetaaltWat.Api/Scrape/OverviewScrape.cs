@@ -1,6 +1,5 @@
 ﻿using HtmlAgilityPack;
 using ProgParty.WieBetaaltWat.Api.Result;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -21,13 +20,11 @@ namespace ProgParty.WieBetaaltWat.Api.Scrape
             string loggedInPassword = Parameters.LoginPassword;
             
 
-            var loginScrape = new Api.Authentication.LoginScrape(loggedInName, loggedInPassword);
+            var loginScrape = new Authentication.LoginScrape(loggedInName, loggedInPassword);
             bool isLoggedIn = loginScrape.Execute();
 
             if(isLoggedIn)
-            {
                 return ConvertToResult(loginScrape.HtmlContent);
-            }
             return new List<OverviewResult>();
         }
 

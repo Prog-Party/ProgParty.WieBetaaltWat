@@ -14,5 +14,21 @@ namespace ProgParty.WieBetaaltWat.Api.Result
         {
             return ListName;
         }
+        internal string ProjectId
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(ListUrl))
+                    return string.Empty;
+
+                int index = ListUrl.IndexOf("lid");
+                int index2 = ListUrl.IndexOf("&", index);
+                if (index == -1 || index2 == -1)
+                    return string.Empty; ;
+
+                string projectId = ListUrl.Substring(index + 4, index2 - index - 4);
+                return projectId;
+            }
+        }
     }
 }

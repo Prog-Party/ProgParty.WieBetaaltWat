@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ProgParty.WieBetaaltWat.Api.Result
+﻿namespace ProgParty.WieBetaaltWat.Api.Result
 {
     public class LijstResult
     {

@@ -48,6 +48,7 @@ namespace ProgParty.WieBetaaltWat.Api.Scrape
             {
                 ListName = (node.Descendants("h1").FirstOrDefault()?.InnerText ?? string.Empty).Trim(),
                 
+                
         //        ListUrl = 
         //        MyBalance = 
         //        HighBalance = 

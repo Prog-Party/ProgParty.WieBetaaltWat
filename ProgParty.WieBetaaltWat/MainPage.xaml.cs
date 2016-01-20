@@ -120,6 +120,8 @@ namespace ProgParty.WieBetaaltWat
             overview.Execute();
             
             var result = overview.Result;
+
+            PageDataContext.SetResult(result);
         }
         
         private void ContactButton_Click(object sender, RoutedEventArgs e)
@@ -134,7 +136,7 @@ namespace ProgParty.WieBetaaltWat
 
         private void GalleryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            searchPivot.SelectedIndex = 1;
         }
 
         private void LoadMoreGalleries_Click(object sender, RoutedEventArgs e)
@@ -150,6 +152,17 @@ namespace ProgParty.WieBetaaltWat
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Login));
+        }
+
+        private void AddEntry_Click(object sender, RoutedEventArgs e)
+        {
+            Button addEntry = (Button)sender;
+            string value = addEntry.CommandParameter.ToString();
+        }
+
+        private void LijstItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
