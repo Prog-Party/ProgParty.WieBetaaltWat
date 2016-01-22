@@ -33,9 +33,9 @@ namespace ProgParty.WieBetaaltWat.Api.Scrape
             {
                 using (HttpClient client = new HttpClient(handler))
                 {
-                    client.DefaultRequestHeaders.Host = "wiebetaaltwat.nl";
+                    client.DefaultRequestHeaders.Host = "www.wiebetaaltwat.nl";
                     client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36");
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "text/html, application/xhtml+xml, image/jxr, */*");
 
                     var response = client.GetAsync(url).Result;
                     var result = response.Content.ReadAsStringAsync().Result;

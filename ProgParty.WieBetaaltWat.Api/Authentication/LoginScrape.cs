@@ -30,7 +30,7 @@ namespace ProgParty.WieBetaaltWat.Api.Authentication
 
         private bool GoToLoginPage()
         {
-            using (var handler = new HttpClientHandler() { CookieContainer = Auth.CookieContainer })
+            using (var handler = new HttpClientHandler() { CookieContainer = new System.Net.CookieContainer() })
             {
                 using (HttpClient client = new HttpClient(handler))
                 {

@@ -54,7 +54,7 @@ namespace ProgParty.WieBetaaltWat.Api.Scrape
 
             var o = new OverviewResult();
             o.ListName = childNodes[0]?.InnerText ?? string.Empty;
-            o.ListUrl = "http://www.wiebetaaltwat.nl" + childNodes[0].Descendants("a").FirstOrDefault()?.Attributes["href"]?.Value + $"&p=1&rows={int.MaxValue}&sort_column=timestamp";
+            o.ListUrl = "https://www.wiebetaaltwat.nl" + childNodes[0].Descendants("a").FirstOrDefault()?.Attributes["href"]?.Value + $"&p=1&rows={int.MaxValue}&sort_column=timestamp";
 
             o.MyBalance = Clean(childNodes[1]?.InnerText);
             o.HighBalance = Clean(childNodes[2]?.InnerText);
