@@ -11,6 +11,7 @@ namespace ProgParty.WieBetaaltWat
     public class WieBetaaltWatDataContext : INotifyPropertyChanged
     {
         public ObservableCollection<OverviewResult> Lijsten { get; set; } = new ObservableCollection<OverviewResult>();
+        public ObservableCollection<LijstResult> LijstResults { get; set; } = new ObservableCollection<LijstResult>();
 
         private bool _galleryItemsLoading = false;
         public bool GalleryItemsLoading

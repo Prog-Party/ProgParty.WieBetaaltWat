@@ -45,7 +45,7 @@
                                                 <Grid x:Name="gridResult" Margin="10" >
                                                     <Grid.ColumnDefinitions>
                                                         <ColumnDefinition Width="*" />
-                                                        <ColumnDefinition Width="160" />
+                                                        <ColumnDefinition Width="140" />
                                                     </Grid.ColumnDefinitions>
                                                     <Grid Grid.Column="0">
                                                         <Grid.ColumnDefinitions>
@@ -64,13 +64,13 @@
                                                         <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding MyBalance}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
 
                                                         <TextBlock Grid.Row="2" Grid.Column="0" Text="Hoogste saldo" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                                        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding HighBalance}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                                        <TextBlock Grid.Row="2" Grid.Column="1" Foreground="Green" Text="{Binding HighBalance}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
 
                                                         <TextBlock Grid.Row="3" Grid.Column="0" Text="Laagste saldo" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                                        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding LowBalance}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                                        <TextBlock Grid.Row="3" Grid.Column="1" Foreground="Red" Text="{Binding LowBalance}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
                                                     </Grid>
                                                     <StackPanel Margin="10,0" Grid.Column="1" Orientation="Vertical">
-                                                        <Button Height="60" FontSize="10" HorizontalAlignment="Stretch" CommandParameter="{Binding ProjectId}" x:Name="AddEntry" Click="AddEntry_Click" Background="#60351d" Foreground="White" BorderBrush="Black" BorderThickness="2" Content="Nieuwe invoer" Width="160" Padding="25,10,25,10" />
+                                                        <Button Height="60" FontSize="10" HorizontalAlignment="Stretch" CommandParameter="{Binding ProjectId}" x:Name="AddEntry" Click="AddEntry_Click" Background="#0098db" Foreground="White" BorderBrush="Black" BorderThickness="2" Content="Nieuwe invoer" Width="120" Padding="25,10,25,10" />
                                                     </StackPanel>
                                                 </Grid>
                                             </Border>
@@ -100,7 +100,7 @@
                 </PivotItem.Header>
                 <Grid Margin="0,0,0,0" HorizontalAlignment="Stretch">
                     <ScrollViewer VerticalScrollBarVisibility="Visible" VerticalScrollMode="Enabled" HorizontalAlignment="Stretch">
-                        <ListView Name="LijstItems" SelectionMode="Single" SelectionChanged="LijstItems_SelectionChanged" ItemsSource="{Binding Path=Lijsten}" HorizontalAlignment="Stretch">
+                        <ListView Name="LijstItems" SelectionMode="Single" SelectionChanged="LijstItems_SelectionChanged" ItemsSource="{Binding Path=LijstResults}" HorizontalAlignment="Stretch">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />

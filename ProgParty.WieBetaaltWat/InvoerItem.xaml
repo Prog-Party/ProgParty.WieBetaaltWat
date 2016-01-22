@@ -63,7 +63,7 @@
     <Page.BottomAppBar>
         <CommandBar x:Name="CommandBar" Background="#60351D">
             <CommandBar.PrimaryCommands>
-                <AppBarButton x:Name="BuyBarButton" Label="Toevoegen" Icon="Accept" Click="BetalingToevoegen_Click" />
+                <AppBarButton x:Name="BuyBarButton" Label="Toevoegen" Icon="Add" Click="BetalingToevoegen_Click" />
             </CommandBar.PrimaryCommands>
             <CommandBar.SecondaryCommands>
             </CommandBar.SecondaryCommands>

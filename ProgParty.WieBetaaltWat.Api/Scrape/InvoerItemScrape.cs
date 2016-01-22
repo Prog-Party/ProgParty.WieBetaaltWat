@@ -56,7 +56,7 @@ namespace ProgParty.WieBetaaltWat.Api.Scrape
             var result = new InvoerItemGetResult();
             foreach(var option in optionNodes)
             {
-                var person = new Api.Result.InvoerItemPerson();
+                var person = new InvoerItemPerson();
                 person.Id = option.Attributes["value"]?.Value;
                 person.Name = option.InnerText;
                 result.Persons.Add(person);

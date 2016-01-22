@@ -40,5 +40,10 @@ namespace ProgParty.WieBetaaltWat
         {
 
         }
+
+        private void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

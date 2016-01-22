@@ -12,7 +12,7 @@ namespace ProgParty.WieBetaaltWat.Api.Result
 
         public override string ToString() => ListName;
 
-        internal string ProjectId
+        public string ProjectId
         {
             get
             {

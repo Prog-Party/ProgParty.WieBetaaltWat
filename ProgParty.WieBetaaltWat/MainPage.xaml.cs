@@ -136,6 +136,20 @@ namespace ProgParty.WieBetaaltWat
 
         private void GalleryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var storage = new Storage();
+            var param = new Api.Parameter.LijstParameter();
+            param.Url = PageDataContext.Lijsten[(sender as ListView).SelectedIndex].ListUrl;
+            param.LoginName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString() ?? string.Empty;
+            param.LoginPassword = storage.LoadFromLocal(StorageKeys.LoggedInPassword)?.ToString() ?? string.Empty;
+            LijstExecute lijst = new LijstExecute() { Parameters = param };
+            lijst.Execute();
+            //OverviewExecute overview = new OverviewExecute() { Parameters = param };
+            //overview.Execute();
+
+            var result = lijst.Result;
+
+            //PageDataContext.SetLijstResult(result);
+
             searchPivot.SelectedIndex = 1;
         }
 
@@ -158,6 +172,8 @@ namespace ProgParty.WieBetaaltWat
         {
             Button addEntry = (Button)sender;
             string value = addEntry.CommandParameter.ToString();
+
+            PageDataContext.Lijsten.FirstOrDefault(c => c.ProjectId == value);
         }
 
         private void LijstItems_SelectionChanged(object sender, SelectionChangedEventArgs e)

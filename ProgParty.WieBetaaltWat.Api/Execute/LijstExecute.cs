@@ -4,7 +4,7 @@ using System;
 
 namespace ProgParty.WieBetaaltWat.Api.Execute
 {
-    public class ArticleExecute
+    public class LijstExecute
     {
         public Parameter.LijstParameter Parameters = new Parameter.LijstParameter();
 

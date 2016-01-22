@@ -1,6 +1,5 @@
 ﻿using HtmlAgilityPack;
 using ProgParty.WieBetaaltWat.Api.Result;
-using ProgParty.Core.Extension;
 using System.Linq;
 using System.Net.Http;
 
@@ -18,6 +17,17 @@ namespace ProgParty.WieBetaaltWat.Api.Scrape
         public LijstResult Execute()
         {
             string url = Parameters.Url;
+            string loggedInName = Parameters.LoginName;
+            string loggedInPassword = Parameters.LoginPassword;
+
+
+            var loginScrape = new Authentication.LoginScrape(loggedInName, loggedInPassword);
+            bool isLoggedIn = loginScrape.Execute();
+
+            //if (isLoggedIn)
+            //    return ConvertToResult(loginScrape.HtmlContent);
+            //return new LijstResult();
+
 
             using (var handler = new HttpClientHandler() { CookieContainer = Auth.CookieContainer })
             {
@@ -41,30 +51,18 @@ namespace ProgParty.WieBetaaltWat.Api.Scrape
             htmlDocument.LoadHtml(result);
             var node = htmlDocument.DocumentNode;
 
+            var tableNode = node.Descendants("table").FirstOrDefault(c => c.Attributes["is"]?.Value?.Contains("list") ?? false);
+
+            var tableRows = tableNode.Descendants("td").ToList();
             
-            var tableNode = node.Descendants("table").SingleOrDefault().Attributes["list-content active"];
-
-            LijstResult a = new LijstResult()
-            {
-                ListName = (node.Descendants("h1").FirstOrDefault()?.InnerText ?? string.Empty).Trim(),
-                
-                
-        //        ListUrl = 
-        //        MyBalance = 
-        //        HighBalance = 
-        //        LowBalance = 
-
-
-        //Title = (node.Descendants("h1").FirstOrDefault()?.InnerText ?? string.Empty).Trim(),
-        //        ViewsCount = (node.Descendants("p").FirstOrDefault(c => c.Attributes["class"]?.Value == "views-count")?.InnerText ?? string.Empty).Trim(),
-        //        AuthorTime = (node.Descendants("p").FirstOrDefault(c => c.Attributes["class"]?.Value == "author-time")?.InnerText ?? string.Empty).Trim(),
-        //        Content = (node.Descendants("div").FirstOrDefault(c => c.Attributes["class"]?.Value == "post-content")?.InnerHtml ?? string.Empty).Trim()
-            };
-
-            //a.Title = System.Net.WebUtility.HtmlDecode(a.Title);
-            //a.AuthorTime = a.AuthorTime.Replace("\n", string.Empty).RemoveDoubleSpaces();
-
-            return a;
+            LijstResult lijstResult = new LijstResult();
+            lijstResult.PaidBy = tableRows[0]?.InnerText ?? string.Empty;
+            lijstResult.Description = tableRows[1]?.InnerText ?? string.Empty;
+            lijstResult.Amount = tableRows[2]?.InnerText ?? string.Empty;
+            lijstResult.Date = tableRows[3]?.InnerText ?? string.Empty;
+            lijstResult.WhoElse = tableRows[4]?.InnerText ?? string.Empty;
+            
+            return lijstResult;
         }
     }
 }
