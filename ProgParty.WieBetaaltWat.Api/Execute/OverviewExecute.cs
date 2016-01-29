@@ -22,10 +22,5 @@ namespace ProgParty.WieBetaaltWat.Api.Execute
                 return false;
             }
         }
-
-        public void Convert(string html)
-        {
-            Result = new OverviewScrape(Parameters).ConvertToResult(html);
-        }
     }
 }

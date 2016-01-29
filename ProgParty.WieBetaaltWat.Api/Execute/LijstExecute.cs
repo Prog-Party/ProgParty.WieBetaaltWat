@@ -1,6 +1,7 @@
 ﻿using ProgParty.WieBetaaltWat.Api.Result;
 using ProgParty.WieBetaaltWat.Api.Scrape;
 using System;
+using System.Collections.Generic;
 
 namespace ProgParty.WieBetaaltWat.Api.Execute
 {
@@ -8,7 +9,7 @@ namespace ProgParty.WieBetaaltWat.Api.Execute
     {
         public Parameter.LijstParameter Parameters = new Parameter.LijstParameter();
 
-        public LijstResult Result;
+        public List<LijstResult> Result;
 
         public bool Execute()
         {

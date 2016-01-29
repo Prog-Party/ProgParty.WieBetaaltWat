@@ -27,7 +27,11 @@
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Stretch" Margin="0,0,0,40" >
                            
                     <Grid HorizontalAlignment="Stretch" Background="{Binding Alternation.Background}">
-                        <Border BorderThickness="1" BorderBrush="#b1c4df" >
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" BorderThickness="1" BorderBrush="#b1c4df" >
                             <Grid x:Name="gridResult" Margin="10" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
@@ -38,17 +42,64 @@
                                     <RowDefinition Height="*" />
                                     <RowDefinition Height="*" />
                                     <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Text="Betaalt door" FontSize="18" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                <ComboBox Grid.Row="0" Grid.Column="1" ></ComboBox>
+                                <ComboBox x:Name="PaymentBy" Loaded="PaymentBy_Loaded" Header="People" Foreground="Black" Grid.Row="0" Grid.Column="1" BorderThickness="1" BorderBrush="#b1c4df" ItemsSource="{Binding LijstPersons}" />
+                                <!--<ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Name}" Foreground="Black"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>-->
+                               
 
-                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Bedrag" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding MyBalance}" InputScope="CurrencyAmountAndSymbol" TextAlignment="Left" />
+                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Beschrijving" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Foreground="Black" BorderThickness="1" BorderBrush="#b1c4df" TextAlignment="Left" />
+                                
+                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Bedrag" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                <TextBox Grid.Row="3"  Grid.Column="0" Foreground="Black" Text="{Binding MyBalance}" BorderThickness="1" BorderBrush="#b1c4df" InputScope="CurrencyAmountAndSymbol" TextAlignment="Left" />
 
-                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Bedrag" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding MyBalance}" TextAlignment="Left" />
+                                <TextBlock Grid.Row="2" Grid.Column="1" Text="Datum" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                <DatePicker Grid.Row="3" Grid.Column="1" Foreground="Black" BorderThickness="1" BorderBrush="#b1c4df" />
                             </Grid>
                         </Border>
+
+                        <ListView Grid.Row="1" Name="galleryUsers" SelectionMode="Single" HorizontalAlignment="Stretch">
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <Grid HorizontalAlignment="Stretch" Background="{Binding Alternation.Background}">
+                                        <Border BorderThickness="1" BorderBrush="#b1c4df" >
+                                            <Grid x:Name="gridResult" Margin="10" >
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="140" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid Grid.Column="0">
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="*" />
+                                                    </Grid.RowDefinitions>
+                                                    <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Text="{Binding ListName}" FontSize="11" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                                </Grid>
+                                                <StackPanel Margin="10,0" Grid.Column="1" Orientation="Vertical" Background="">
+                                                    <Button Height="60" FontSize="10" HorizontalAlignment="Stretch" CommandParameter="{Binding ProjectId}" x:Name="PlusEntry" Background="#0098db" Foreground="White" BorderBrush="Black" BorderThickness="2" Content="-" Width="120" Padding="25,10,25,10" />
+                                                    <Button Height="60" FontSize="10" HorizontalAlignment="Stretch" CommandParameter="{Binding ProjectId}" x:Name="MinusEntry" Background="#0098db" Foreground="White" BorderBrush="Black" BorderThickness="2" Content="+" Width="120" Padding="25,10,25,10" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </Grid>
 
                     <StackPanel Margin="0,0,0,15" Orientation="Vertical" Visibility="{Binding Path=GalleryItemsLoadingVisibility}">

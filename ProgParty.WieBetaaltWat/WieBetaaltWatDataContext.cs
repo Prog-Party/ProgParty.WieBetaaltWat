@@ -12,6 +12,7 @@ namespace ProgParty.WieBetaaltWat
     {
         public ObservableCollection<OverviewResult> Lijsten { get; set; } = new ObservableCollection<OverviewResult>();
         public ObservableCollection<LijstResult> LijstResults { get; set; } = new ObservableCollection<LijstResult>();
+        public ObservableCollection<InvoerItemPerson> LijstPersons { get; set; } = new ObservableCollection<InvoerItemPerson>();
 
         private bool _galleryItemsLoading = false;
         public bool GalleryItemsLoading
@@ -94,6 +95,22 @@ namespace ProgParty.WieBetaaltWat
             Lijsten.Clear();
             foreach (var singleResult in result)
                 Lijsten.Add(singleResult);
+            GalleryItemsLoading = false;
+        }
+
+        internal void SetLijstResult(List<LijstResult> result)
+        {
+            LijstResults.Clear();
+            foreach (var singleResult in result)
+                LijstResults.Add(singleResult);
+            GalleryItemsLoading = false;
+        }
+
+        internal void SetLijstPersons(List<InvoerItemPerson> persons)
+        {
+            LijstPersons.Clear();
+            foreach (var singleResult in persons)
+                LijstPersons.Add(singleResult);
             GalleryItemsLoading = false;
         }
     }

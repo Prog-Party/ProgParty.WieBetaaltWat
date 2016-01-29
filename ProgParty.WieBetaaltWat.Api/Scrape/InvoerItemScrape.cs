@@ -19,28 +19,40 @@ namespace ProgParty.WieBetaaltWat.Api.Scrape
 
         public InvoerItemGetResult Execute()
         {
-            var url = ConstructUrl();
+            string loggedInName = Parameters.LoginName;
+            string loggedInPassword = Parameters.LoginPassword;
 
-            using (var handler = new HttpClientHandler() { CookieContainer = Auth.CookieContainer })
+
+            var loginScrape = new Authentication.LoginScrape(loggedInName, loggedInPassword);
+            bool isLoggedIn = loginScrape.Execute();
+
+            if (isLoggedIn)
             {
-                using (HttpClient client = new HttpClient(handler))
+
+                var url = ConstructUrl();
+
+                using (var handler = new HttpClientHandler() { CookieContainer = Auth.CookieContainer })
                 {
-                    client.DefaultRequestHeaders.Host = "wiebetaaltwat.nl";
-                    client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36");
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+                    using (HttpClient client = new HttpClient(handler))
+                    {
+                        client.DefaultRequestHeaders.Host = "www.wiebetaaltwat.nl";
+                        client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.125 Safari/537.36");
+                        client.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
 
-                    var response = client.GetAsync(url).Result;
-                    var result = response.Content.ReadAsStringAsync().Result;
+                        var response = client.GetAsync(url).Result;
+                        var result = response.Content.ReadAsStringAsync().Result;
 
-                    return ConvertToResult(result);
+                        return ConvertToResult(result);
+                    }
                 }
             }
+            return new InvoerItemGetResult();
         }
 
         private string ConstructUrl()
         {
             string projectId = Parameters.SingleList.ProjectId;
-            return $"https://wiebetaaltwat.nl/index.php?lid={projectId}&page=transaction&type=add";
+            return $"https://www.wiebetaaltwat.nl/index.php?lid={projectId}&page=transaction&type=add";
         }
         
         public InvoerItemGetResult ConvertToResult(string html)
@@ -58,7 +70,7 @@ namespace ProgParty.WieBetaaltWat.Api.Scrape
             {
                 var person = new InvoerItemPerson();
                 person.Id = option.Attributes["value"]?.Value;
-                person.Name = option.InnerText;
+                person.Name = option?.NextSibling?.InnerText;
                 result.Persons.Add(person);
             }
 

@@ -148,7 +148,7 @@ namespace ProgParty.WieBetaaltWat
 
             var result = lijst.Result;
 
-            //PageDataContext.SetLijstResult(result);
+            PageDataContext.SetLijstResult(result);
 
             searchPivot.SelectedIndex = 1;
         }
@@ -160,7 +160,7 @@ namespace ProgParty.WieBetaaltWat
 
         private void AddListButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(InvoerItem), DataContext);
         }
 
         private void SettingsButton_Click(object sender, RoutedEventArgs e)
@@ -179,6 +179,25 @@ namespace ProgParty.WieBetaaltWat
         private void LijstItems_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void gridResult_PointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            
+        }
+
+        private void searchPivot_PivotItemLoaded(Pivot sender, PivotItemEventArgs args)
+        {
+            if(searchPivot.SelectedIndex == 0)
+            {
+                AddItemButton.Visibility = Visibility.Collapsed;
+                ConfigButton.Visibility = Visibility.Visible;
+            }
+            else if (searchPivot.SelectedIndex == 1)
+            {
+                AddItemButton.Visibility = Visibility.Visible;
+                ConfigButton.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }
