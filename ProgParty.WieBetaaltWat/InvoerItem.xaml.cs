@@ -27,9 +27,6 @@ namespace ProgParty.WieBetaaltWat
         public InvoerItem()
         {
             this.InitializeComponent();
-
-            
-
         }
 
         /// <summary>
@@ -40,6 +37,8 @@ namespace ProgParty.WieBetaaltWat
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             WieBetaaltWatDataContext dataContext = e.Parameter as WieBetaaltWatDataContext;
+
+            DataContext = dataContext;
 
             var storage = new Storage();
             var param = new Api.Parameter.InvoerItemParameter();
@@ -54,7 +53,7 @@ namespace ProgParty.WieBetaaltWat
 
             dataContext.SetLijstPersons(result.Persons);
         }
-
+        
         private void BetalingToevoegen_Click(object sender, RoutedEventArgs e)
         {
 
