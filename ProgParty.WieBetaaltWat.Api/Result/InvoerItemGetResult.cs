@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Windows.UI.Xaml;
 
 namespace ProgParty.WieBetaaltWat.Api.Result
 {
@@ -15,6 +16,8 @@ namespace ProgParty.WieBetaaltWat.Api.Result
         public string Name { get; set; }
         public double Amount { get; set; }
 
+        public Visibility MinIsVisible => ShareCount == 0 ? Visibility.Collapsed : Visibility.Visible;
+
         private int _shareCount = 0;
         public int ShareCount
         {
@@ -23,6 +26,7 @@ namespace ProgParty.WieBetaaltWat.Api.Result
             {
                 _shareCount = value;
                 OnPropertyChanged(nameof(ShareCount));
+                OnPropertyChanged(nameof(MinIsVisible));
             }
         }
 

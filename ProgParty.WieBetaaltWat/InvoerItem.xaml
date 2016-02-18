@@ -88,7 +88,7 @@
                                                     <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Text="{Binding Name}" FontSize="11" TextWrapping="WrapWholeWords" TextAlignment="Left" />
                                                     <TextBlock Grid.Row="1"  Grid.Column="0" Text="{Binding ShareCount}" FontSize="11" TextWrapping="WrapWholeWords" TextAlignment="Left" />
                                                     <TextBlock Grid.Row="2"  Grid.Column="0" Text="{Binding Amount}" FontSize="11" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                                    <Button Grid.RowSpan="3" Grid.Column="1" FontSize="40" HorizontalAlignment="Stretch" x:Name="MinusEntry" Background="#0098db" Foreground="White" BorderBrush="Black" BorderThickness="1" Content="-" Click="MinusEntry_Click" />
+                                                    <Button Grid.RowSpan="3" Grid.Column="1" FontSize="40" HorizontalAlignment="Stretch" x:Name="MinusEntry" Visibility="{Binding MinIsVisible}" Background="#0098db" Foreground="White" BorderBrush="Black" BorderThickness="1" Content="-" Click="MinusEntry_Click" />
                                                     <Button Grid.RowSpan="3" Grid.Column="2" FontSize="40" HorizontalAlignment="Stretch" x:Name="PlusEntry" Background="#0098db" Foreground="White" BorderBrush="Black" BorderThickness="1" Content="+" Click="PlusEntry_Click" />
                                                 </Grid>
                                             </Grid>
