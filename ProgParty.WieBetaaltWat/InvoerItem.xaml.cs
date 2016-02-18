@@ -40,6 +40,8 @@ namespace ProgParty.WieBetaaltWat
             WieBetaaltWatDataContext dataContext = e.Parameter as WieBetaaltWatDataContext;
             DataContext = dataContext;
 
+            DataContext = dataContext;
+
             var storage = new Storage();
             var param = new Api.Parameter.InvoerItemParameter();
             param.SingleList = dataContext.Lijsten.SingleOrDefault(p => p.ProjectId.Equals(dataContext.ProjectId.ToString()));
@@ -53,7 +55,7 @@ namespace ProgParty.WieBetaaltWat
 
             dataContext.SetLijstPersons(result.Persons);
         }
-
+        
         private void BetalingToevoegen_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(MainPage));
