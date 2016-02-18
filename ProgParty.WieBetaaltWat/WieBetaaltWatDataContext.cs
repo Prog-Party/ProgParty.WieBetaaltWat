@@ -14,6 +14,8 @@ namespace ProgParty.WieBetaaltWat
         public ObservableCollection<LijstResult> LijstResults { get; set; } = new ObservableCollection<LijstResult>();
         public ObservableCollection<InvoerItemPerson> LijstPersons { get; set; } = new ObservableCollection<InvoerItemPerson>();
 
+        public int ProjectId { get; set; } = -1;
+
         private bool _galleryItemsLoading = false;
         public bool GalleryItemsLoading
         {

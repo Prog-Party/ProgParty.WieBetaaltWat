@@ -12,6 +12,7 @@ namespace ProgParty.WieBetaaltWat.Api.Result
         public string Id { get; set; }
         public string Name { get; set; }
         public int Amount { get; set; }
+        public int ShareCount { get; set; } = 0;
 
         public override string ToString()
         {

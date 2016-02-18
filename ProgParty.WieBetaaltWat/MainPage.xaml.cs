@@ -59,17 +59,6 @@ namespace ProgParty.WieBetaaltWat
 
             PageDataContext = new WieBetaaltWatDataContext();
             DataContext = PageDataContext;
-
-
-
-            //AppBarButton btnHome = new AppBarButton();
-            //btnHome.Label = "Nieuwe invoer";
-            //btnHome.Icon = new SymbolIcon(Symbol.Add);
-
-            //this.CommandBar.PrimaryCommands.Add(btnHome);
-
-            //btnHome.IsEnabled = true;
-            //< AppBarButton Label = "Nieuwe invoer" Icon = "Add" />
         }
 
         private void RedirectPageForLoggedin()
@@ -138,13 +127,14 @@ namespace ProgParty.WieBetaaltWat
         {
             var storage = new Storage();
             var param = new Api.Parameter.LijstParameter();
+            param.ProjectId = int.Parse(PageDataContext.Lijsten[(sender as ListView).SelectedIndex].ProjectId);
             param.Url = PageDataContext.Lijsten[(sender as ListView).SelectedIndex].ListUrl;
             param.LoginName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString() ?? string.Empty;
             param.LoginPassword = storage.LoadFromLocal(StorageKeys.LoggedInPassword)?.ToString() ?? string.Empty;
             LijstExecute lijst = new LijstExecute() { Parameters = param };
             lijst.Execute();
-            //OverviewExecute overview = new OverviewExecute() { Parameters = param };
-            //overview.Execute();
+            
+            PageDataContext.ProjectId = param.ProjectId;
 
             var result = lijst.Result;
 
@@ -173,7 +163,9 @@ namespace ProgParty.WieBetaaltWat
             Button addEntry = (Button)sender;
             string value = addEntry.CommandParameter.ToString();
 
-            PageDataContext.Lijsten.FirstOrDefault(c => c.ProjectId == value);
+            PageDataContext.ProjectId = int.Parse(PageDataContext.Lijsten.FirstOrDefault(c => c.ProjectId == value).ProjectId);
+
+            Frame.Navigate(typeof(InvoerItem), PageDataContext);
         }
 
         private void LijstItems_SelectionChanged(object sender, SelectionChangedEventArgs e)

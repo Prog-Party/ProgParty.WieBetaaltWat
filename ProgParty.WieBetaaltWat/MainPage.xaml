@@ -111,7 +111,7 @@
                                     <Grid x:Name="gridResult" Margin="10" >
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="2*" />
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="*" />
@@ -134,7 +134,7 @@
                                             <Grid x:Name="GridResult" Margin="10" PointerReleased="gridResult_PointerReleased" >
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="2*" />
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />
                                                     <ColumnDefinition Width="*" />

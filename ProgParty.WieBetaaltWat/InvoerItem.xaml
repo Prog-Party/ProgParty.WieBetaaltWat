@@ -43,28 +43,23 @@
                                     <RowDefinition Height="*" />
                                     <RowDefinition Height="*" />
                                     <RowDefinition Height="*" />
+                                    <RowDefinition Height="*" />
                                 </Grid.RowDefinitions>
                                 <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Text="Betaalt door" FontSize="18" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                <ComboBox x:Name="PaymentBy" Loaded="PaymentBy_Loaded" Header="People" Foreground="Black" Grid.Row="0" Grid.Column="1" BorderThickness="1" BorderBrush="#b1c4df" ItemsSource="{Binding LijstPersons}" />
-                                <!--<ComboBox.ItemTemplate>
-                                        <DataTemplate>
-                                            <TextBlock Text="{Binding Name}" Foreground="Black"/>
-                                        </DataTemplate>
-                                    </ComboBox.ItemTemplate>-->
-                               
+                                <ComboBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="PaymentBy" Loaded="PaymentBy_Loaded" Background="#0098db" Foreground="b1c4df" BorderThickness="1" BorderBrush="#b1c4df" ItemsSource="{Binding LijstPersons}" />
 
-                                <TextBlock Grid.Row="1" Grid.Column="0" Text="Beschrijving" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                <TextBox Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Foreground="Black" BorderThickness="1" BorderBrush="#b1c4df" TextAlignment="Left" />
-                                
-                                <TextBlock Grid.Row="2" Grid.Column="0" Text="Bedrag" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                <TextBox Grid.Row="3"  Grid.Column="0" Foreground="Black" Text="{Binding MyBalance}" BorderThickness="1" BorderBrush="#b1c4df" InputScope="CurrencyAmountAndSymbol" TextAlignment="Left" />
+                                <TextBlock Grid.Row="2" FontWeight="Bold" FontSize="12" Grid.Column="0" Text="Beschrijving" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                <TextBox Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Foreground="Black" BorderThickness="1" BorderBrush="#b1c4df" TextAlignment="Left" />
 
-                                <TextBlock Grid.Row="2" Grid.Column="1" Text="Datum" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                <DatePicker Grid.Row="3" Grid.Column="1" Foreground="Black" BorderThickness="1" BorderBrush="#b1c4df" />
+                                <TextBlock Grid.Row="4" FontWeight="Bold" FontSize="12" Grid.Column="0" Text="Bedrag" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                <TextBox Grid.Row="5"  Grid.Column="0" Foreground="Black" Text="{Binding MyBalance}" BorderThickness="1" BorderBrush="#b1c4df" InputScope="CurrencyAmountAndSymbol" TextAlignment="Left" />
+
+                                <TextBlock Grid.Row="4" FontWeight="Bold" FontSize="12" Grid.Column="1" Text="Datum" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                <DatePicker Grid.Row="5" Grid.Column="1" Foreground="Black" BorderThickness="1" BorderBrush="#b1c4df" />
                             </Grid>
                         </Border>
 
-                        <ListView Grid.Row="1" Name="galleryUsers" SelectionMode="Single" HorizontalAlignment="Stretch">
+                        <ListView Grid.Row="1" Name="galleryUsers" SelectionMode="Single" HorizontalAlignment="Stretch" ItemsSource="{Binding LijstPersons}">
                             <ListView.ItemContainerStyle>
                                 <Style TargetType="ListViewItem">
                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -74,26 +69,26 @@
                                 <DataTemplate>
                                     <Grid HorizontalAlignment="Stretch" Background="{Binding Alternation.Background}">
                                         <Border BorderThickness="1" BorderBrush="#b1c4df" >
-                                            <Grid x:Name="gridResult" Margin="10" >
+                                            <Grid x:Name="gridResult" Margin="10 5 10 5" >
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="140" />
                                                 </Grid.ColumnDefinitions>
                                                 <Grid Grid.Column="0">
                                                     <Grid.ColumnDefinitions>
-                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="2*" />
                                                         <ColumnDefinition Width="*" />
                                                         <ColumnDefinition Width="*" />
                                                     </Grid.ColumnDefinitions>
                                                     <Grid.RowDefinitions>
                                                         <RowDefinition Height="*" />
+                                                        <RowDefinition Height="*" />
                                                     </Grid.RowDefinitions>
-                                                    <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Text="{Binding ListName}" FontSize="11" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+
+                                                    <TextBlock Grid.Row="0" Grid.Column="0" FontWeight="Bold" Text="{Binding Name}" FontSize="11" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                                    <TextBlock Grid.Row="1"  Grid.Column="0" Text="{Binding ShareCount}" FontSize="11" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                                    <Button Grid.RowSpan="2" Grid.Column="1" FontSize="40" HorizontalAlignment="Stretch" x:Name="MinusEntry" Background="#0098db" Foreground="White" BorderBrush="Black" BorderThickness="1" Content="-" Click="MinusEntry_Click" />
+                                                    <Button Grid.RowSpan="2" Grid.Column="2" FontSize="40" HorizontalAlignment="Stretch" x:Name="PlusEntry" Background="#0098db" Foreground="White" BorderBrush="Black" BorderThickness="1" Content="+" Click="PlusEntry_Click" />
                                                 </Grid>
-                                                <StackPanel Margin="10,0" Grid.Column="1" Orientation="Vertical" Background="">
-                                                    <Button Height="60" FontSize="10" HorizontalAlignment="Stretch" CommandParameter="{Binding ProjectId}" x:Name="PlusEntry" Background="#0098db" Foreground="White" BorderBrush="Black" BorderThickness="2" Content="-" Width="120" Padding="25,10,25,10" />
-                                                    <Button Height="60" FontSize="10" HorizontalAlignment="Stretch" CommandParameter="{Binding ProjectId}" x:Name="MinusEntry" Background="#0098db" Foreground="White" BorderBrush="Black" BorderThickness="2" Content="+" Width="120" Padding="25,10,25,10" />
-                                                </StackPanel>
                                             </Grid>
                                         </Border>
                                     </Grid>

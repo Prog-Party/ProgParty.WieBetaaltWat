@@ -1,5 +1,6 @@
 ﻿using ProgParty.Core.Storage;
 using ProgParty.WieBetaaltWat.Api.Execute;
+using ProgParty.WieBetaaltWat.Api.Result;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,9 +28,6 @@ namespace ProgParty.WieBetaaltWat
         public InvoerItem()
         {
             this.InitializeComponent();
-
-            
-
         }
 
         /// <summary>
@@ -40,10 +38,11 @@ namespace ProgParty.WieBetaaltWat
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             WieBetaaltWatDataContext dataContext = e.Parameter as WieBetaaltWatDataContext;
+            DataContext = dataContext;
 
             var storage = new Storage();
             var param = new Api.Parameter.InvoerItemParameter();
-            param.SingleList = dataContext.Lijsten[0];
+            param.SingleList = dataContext.Lijsten.SingleOrDefault(p => p.ProjectId.Equals(dataContext.ProjectId.ToString()));
             param.LoginName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString() ?? string.Empty;
             param.LoginPassword = storage.LoadFromLocal(StorageKeys.LoggedInPassword)?.ToString() ?? string.Empty;
 
@@ -57,7 +56,7 @@ namespace ProgParty.WieBetaaltWat
 
         private void BetalingToevoegen_Click(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(MainPage));
         }
 
         private void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
@@ -69,6 +68,21 @@ namespace ProgParty.WieBetaaltWat
         {
             var combo = sender as ComboBox;
             combo.SelectedIndex = 0;
+        }
+
+        private void PlusEntry_Click(object sender, RoutedEventArgs e)
+        {        
+            Button PlusEntry = (Button)sender;
+            InvoerItemPerson invoerItemPerson = (InvoerItemPerson)PlusEntry.DataContext;
+            invoerItemPerson.ShareCount++;
+
+            // recalculateShares (scrape from website)
+        }
+
+        private void MinusEntry_Click(object sender, RoutedEventArgs e)
+        {
+
+            // recalculateShares (scrape from website)
         }
     }
 }
