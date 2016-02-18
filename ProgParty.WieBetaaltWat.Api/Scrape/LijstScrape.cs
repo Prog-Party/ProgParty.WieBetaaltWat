@@ -55,9 +55,14 @@ namespace ProgParty.WieBetaaltWat.Api.Scrape
             
             List<LijstResult> lijstResults = new List<LijstResult>();
 
-            foreach (var row in tableRows.Take(5))
+            foreach (var row in tableRows)
             {
                 var tableTDs = row?.Descendants("td").ToList();
+
+                if(tableTDs.Count < 5)
+                {
+                    continue;
+                }
 
                 LijstResult lijstResult = new LijstResult();
                 lijstResult.PaidBy = tableTDs[0]?.InnerText ?? string.Empty;

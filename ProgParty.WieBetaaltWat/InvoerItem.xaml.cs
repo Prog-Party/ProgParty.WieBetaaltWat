@@ -25,6 +25,8 @@ namespace ProgParty.WieBetaaltWat
     /// </summary>
     public sealed partial class InvoerItem : Page
     {
+        private WieBetaaltWatDataContext _dataContext;
+
         public InvoerItem()
         {
             this.InitializeComponent();
@@ -37,14 +39,12 @@ namespace ProgParty.WieBetaaltWat
         /// This parameter is typically used to configure the page.</param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            WieBetaaltWatDataContext dataContext = e.Parameter as WieBetaaltWatDataContext;
-            DataContext = dataContext;
-
-            DataContext = dataContext;
+            _dataContext = e.Parameter as WieBetaaltWatDataContext;
+            DataContext = _dataContext;
 
             var storage = new Storage();
             var param = new Api.Parameter.InvoerItemParameter();
-            param.SingleList = dataContext.Lijsten.SingleOrDefault(p => p.ProjectId.Equals(dataContext.ProjectId.ToString()));
+            param.SingleList = _dataContext.Lijsten.SingleOrDefault(p => p.ProjectId.Equals(_dataContext.ProjectId.ToString()));
             param.LoginName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString() ?? string.Empty;
             param.LoginPassword = storage.LoadFromLocal(StorageKeys.LoggedInPassword)?.ToString() ?? string.Empty;
 
@@ -53,7 +53,7 @@ namespace ProgParty.WieBetaaltWat
 
             var result = invoerExecute.Result;
 
-            dataContext.SetLijstPersons(result.Persons);
+            _dataContext.SetLijstPersons(result.Persons);
         }
         
         private void BetalingToevoegen_Click(object sender, RoutedEventArgs e)
@@ -78,13 +78,48 @@ namespace ProgParty.WieBetaaltWat
             InvoerItemPerson invoerItemPerson = (InvoerItemPerson)PlusEntry.DataContext;
             invoerItemPerson.ShareCount++;
 
-            // recalculateShares (scrape from website)
+            Recalculate();
         }
 
         private void MinusEntry_Click(object sender, RoutedEventArgs e)
         {
+            Button PlusEntry = (Button)sender;
+            InvoerItemPerson invoerItemPerson = (InvoerItemPerson)PlusEntry.DataContext;
+            if (invoerItemPerson.ShareCount > 0)
+            {
+                invoerItemPerson.ShareCount--;
 
-            // recalculateShares (scrape from website)
+                Recalculate();
+            }
+        }
+
+        private double _totalAmount = 0;
+        private void Recalculate()
+        {
+            var selectedPerson = PaymentBy.SelectedValue as InvoerItemPerson;
+
+            foreach (var item in _dataContext.LijstPersons)
+                item.Recalculate(_dataContext.LijstPersons.ToList(), selectedPerson.Id, _totalAmount);
+        }
+
+        private void PaymentBy_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Recalculate();
+        }
+
+        private void Balance_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string balance = Balance.Text;
+            balance = balance.Replace('.', ',');
+            if (double.TryParse(balance, System.Globalization.NumberStyles.Any, new System.Globalization.CultureInfo("nl-NL"), out _totalAmount))
+            {
+                Balance.Background = new SolidColorBrush(Windows.UI.Colors.Transparent);
+            } else
+            {
+                Balance.Background = new SolidColorBrush(Windows.UI.Colors.Red);
+            }
+
+            Recalculate();
         }
     }
 }
