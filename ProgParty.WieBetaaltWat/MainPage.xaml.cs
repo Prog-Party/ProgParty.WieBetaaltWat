@@ -136,6 +136,8 @@ namespace ProgParty.WieBetaaltWat
             
             PageDataContext.ProjectId = param.ProjectId;
 
+           // PageDataContext.SelectedLijstResult = galleryList.SelectedIndex;
+
             var result = lijst.Result;
 
             PageDataContext.SetLijstResult(result);
@@ -164,6 +166,7 @@ namespace ProgParty.WieBetaaltWat
             string value = addEntry.CommandParameter.ToString();
 
             PageDataContext.ProjectId = int.Parse(PageDataContext.Lijsten.FirstOrDefault(c => c.ProjectId == value).ProjectId);
+            //PageDataContext.SelectedLijstResult = galleryList.SelectedIndex;
 
             Frame.Navigate(typeof(InvoerItem), PageDataContext);
         }

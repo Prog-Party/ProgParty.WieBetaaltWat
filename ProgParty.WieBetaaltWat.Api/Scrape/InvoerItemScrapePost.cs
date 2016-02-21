@@ -24,14 +24,16 @@ namespace ProgParty.WieBetaaltWat.Api.Scrape
                 using (HttpClient client = new HttpClient(handler))
                 {
                     client.DefaultRequestHeaders.Host = "www.wiebetaaltwat.nl";
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "text/html, application/xhtml+xml, image/jxr, */*");
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("Referer", "https://www.wiebetaaltwat.nl");
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("Accept-Language", "nl-NL,nl;q=0.8,en-GB;q=0.5,en;q=0.3");
+                    
+//                    client.DefaultRequestHeaders.TryAddWithoutValidation("Referer", "https://www.wiebetaaltwat.nl");
+//                    client.DefaultRequestHeaders.TryAddWithoutValidation("Accept-Language", "nl-NL,nl;q=0.8,en-GB;q=0.5,en;q=0.3");
                     client.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240");
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/x-www-form-urlencoded");
+                    //client.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "text/html, application/xhtml+xml, image/jxr, */*");
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+                    //                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/x-www-form-urlencoded");
                     //client.DefaultRequestHeaders.TryAddWithoutValidation("Accept-Encoding", "gzip, deflate");
 
-                    string uri = "https://wiebetaaltwat.nl/index.php";
+                    string uri = "https://www.wiebetaaltwat.nl/index.php";
 
                     var description = System.Net.WebUtility.UrlEncode(Parameters.Description);
                     string amount = Parameters.Amount.ToString().Replace(".", "%2C").Replace(",", "%2C");
@@ -46,6 +48,14 @@ namespace ProgParty.WieBetaaltWat.Api.Scrape
                         new KeyValuePair<string, string>("date", Parameters.Date.ToString("dd-MM-yyyy")),
                         new KeyValuePair<string, string>("submit_add", "Verwerken")
                     };
+
+                    foreach(InvoerItemPerson person in Parameters.Persons)
+                    {
+                        if (person.Amount == 0)
+                            continue;
+
+                        keyValPairs.Add(new KeyValuePair<string, string>("factor[" + person.Id + "]", person.ShareCount.ToString()));
+                    }
 
                     foreach (var person in Parameters.Persons)
                     {

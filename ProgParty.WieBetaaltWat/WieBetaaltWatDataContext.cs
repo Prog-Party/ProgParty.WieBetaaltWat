@@ -13,7 +13,7 @@ namespace ProgParty.WieBetaaltWat
         public ObservableCollection<OverviewResult> Lijsten { get; set; } = new ObservableCollection<OverviewResult>();
         public ObservableCollection<LijstResult> LijstResults { get; set; } = new ObservableCollection<LijstResult>();
         public ObservableCollection<InvoerItemPerson> LijstPersons { get; set; } = new ObservableCollection<InvoerItemPerson>();
-
+        
         public int ProjectId { get; set; } = -1;
 
         private bool _galleryItemsLoading = false;
@@ -29,61 +29,9 @@ namespace ProgParty.WieBetaaltWat
         }
         public Visibility GalleryItemsLoadingVisibility => GalleryItemsLoading ? Visibility.Visible : Visibility.Collapsed;
 
-        //public int GalleryItemIndex = 0;
-        //public int SelectedGallery = 0;
-
-        //private bool _articleLoading = false;
-        //public bool ArticleLoading
-        //{
-        //    get { return _articleLoading; }
-        //    set
-        //    {
-        //        _articleLoading = value;
-
-        //        OnPropertyChanged("ArticleLoadingVisibility");
-        //    }
-        //}
-
-        //public Visibility ArticleLoadingVisibility => ArticleLoading ? Visibility.Visible : Visibility.Collapsed;
-
-        //public ObservableCollection<LijstResult> Articles { get; internal set; } = new ObservableCollection<LijstResult>();
-
         public WieBetaaltWatDataContext()
         {
         }
-
-        //internal OverviewResult GetNextGallery(int getNextGalleryCounter = 12)
-        //{
-        //    SelectedGallery++;
-        //    var galleryIndex = SelectedGallery;
-
-        //    var galleryItem = Gallery.FirstOrDefault(g => g.Index == galleryIndex);
-        //    if (galleryItem == null)
-        //    {
-        //        if (getNextGalleryCounter != 0)
-        //            return GetNextGallery(getNextGalleryCounter - 1);
-        //    }
-
-        //    return galleryItem;
-        //}
-
-        //internal bool NeedGalleryScrape()
-        //{
-        //    var galleryIndex = SelectedGallery;
-        //    if (galleryIndex > (GalleryItemIndex - 4))
-        //    {
-        //        return true;
-        //    }
-
-        //    return false;
-        //}
-
-        //internal void InitializeNewArticle(ArticleResult article)
-        //{
-        //    ArticleLoading = false;
-        //    Articles.Clear();
-        //    Articles.Add(article);
-        //}
 
         protected void OnPropertyChanged(string propertyName)
         {

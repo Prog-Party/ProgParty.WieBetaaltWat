@@ -16,5 +16,4 @@ namespace ProgParty.WieBetaaltWat.Api.Parameter
 
         public DateTime Date { get; set; }
     }
-
 }

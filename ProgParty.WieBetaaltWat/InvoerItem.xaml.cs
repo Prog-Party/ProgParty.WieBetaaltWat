@@ -58,6 +58,31 @@ namespace ProgParty.WieBetaaltWat
         
         private void BetalingToevoegen_Click(object sender, RoutedEventArgs e)
         {
+            var storage = new Storage();
+            var param = new Api.Parameter.InvoerItemParameterPost();
+            param.Amount = _totalAmount;
+            param.Date = DateTime.Now;
+            param.Description = Description.Text;
+            param.PaymentBy = PaymentBy.SelectedValue as InvoerItemPerson;
+            param.Persons = _dataContext.LijstPersons.ToList();
+
+            param.SingleList = _dataContext.Lijsten.FirstOrDefault(c => int.Parse(c.ProjectId) == _dataContext.ProjectId);
+
+            //OverviewResult overviewResult = new OverviewResult();
+            //overviewResult.ListUrl = _dataContext.
+            //param.SingleList = PaymentBy.SelectedValue as InvoerItemPerson;
+
+            //param.SingleList = overviewResult; 
+
+            //param.ProjectId = int.Parse(PageDataContext.Lijsten[(sender as ListView).SelectedIndex].ProjectId);
+            //param.Url = PageDataContext.Lijsten[(sender as ListView).SelectedIndex].ListUrl;
+            //param.LoginName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString() ?? string.Empty;
+            //param.LoginPassword = storage.LoadFromLocal(StorageKeys.LoggedInPassword)?.ToString() ?? string.Empty;
+
+            InvoerItemPostExecute invoerItemPostExecute = new InvoerItemPostExecute() { Parameters = param };
+            invoerItemPostExecute.Execute();
+
+
             Frame.Navigate(typeof(MainPage));
         }
 
