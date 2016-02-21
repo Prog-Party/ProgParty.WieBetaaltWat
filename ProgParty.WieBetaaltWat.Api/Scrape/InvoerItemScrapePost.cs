@@ -63,7 +63,6 @@ namespace ProgParty.WieBetaaltWat.Api.Scrape
                         var htmlContent = response.Result.Content.ReadAsStringAsync().Result;
 
                         return ConvertToResult(htmlContent);
-                        
                     }
                 }
             }
