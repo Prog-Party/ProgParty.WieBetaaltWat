@@ -63,6 +63,9 @@ namespace ProgParty.WieBetaaltWat
             InvoerItemPostExecute invoerItemPostExecute = new InvoerItemPostExecute() { Parameters = param };
             invoerItemPostExecute.Execute();
 
+            Core.Notification.Toast toastMessage = new Core.Notification.Toast();
+            toastMessage.Notify("De invoer is toegevoegd aan de lijst.", Windows.UI.Notifications.ToastTemplateType.ToastImageAndText02, 3);
+
             Frame.Navigate(typeof(MainPage));
         }
 
