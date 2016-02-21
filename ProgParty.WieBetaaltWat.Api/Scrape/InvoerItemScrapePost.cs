@@ -1,7 +1,4 @@
-﻿using HtmlAgilityPack;
-using ProgParty.WieBetaaltWat.Api.Result;
-using ProgParty.Core.Extension;
-using System.Linq;
+﻿using ProgParty.WieBetaaltWat.Api.Result;
 using System.Net.Http;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -54,16 +51,9 @@ namespace ProgParty.WieBetaaltWat.Api.Scrape
                         if (person.Amount == 0)
                             continue;
 
-                        keyValPairs.Add(new KeyValuePair<string, string>("factor[" + person.Id + "]", person.ShareCount.ToString()));
+                        keyValPairs.Add(new KeyValuePair<string, string>($"factor[{ person.Id }]", person.ShareCount.ToString()));
                     }
-
-                    foreach (var person in Parameters.Persons)
-                    {
-                        var factor = $"factor%5B{person.Id}%5D";
-
-                        keyValPairs.Add(new KeyValuePair<string, string>(factor, person.Amount.ToString()));
-                    }
-
+                    
                     var content = new FormUrlEncodedContent(keyValPairs);
                     
                     Task<HttpResponseMessage> response = client.PostAsync(uri, content);

@@ -1,20 +1,11 @@
 ﻿using ProgParty.Core;
 using ProgParty.Core.Storage;
 using ProgParty.WieBetaaltWat.Api.Execute;
-using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel.Store;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
@@ -136,11 +127,7 @@ namespace ProgParty.WieBetaaltWat
             
             PageDataContext.ProjectId = param.ProjectId;
 
-           // PageDataContext.SelectedLijstResult = galleryList.SelectedIndex;
-
-            var result = lijst.Result;
-
-            PageDataContext.SetLijstResult(result);
+            PageDataContext.SetLijstResult(lijst.Result);
 
             searchPivot.SelectedIndex = 1;
         }
@@ -166,7 +153,6 @@ namespace ProgParty.WieBetaaltWat
             string value = addEntry.CommandParameter.ToString();
 
             PageDataContext.ProjectId = int.Parse(PageDataContext.Lijsten.FirstOrDefault(c => c.ProjectId == value).ProjectId);
-            //PageDataContext.SelectedLijstResult = galleryList.SelectedIndex;
 
             Frame.Navigate(typeof(InvoerItem), PageDataContext);
         }

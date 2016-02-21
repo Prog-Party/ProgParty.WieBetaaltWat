@@ -1,9 +1,7 @@
 ﻿using HtmlAgilityPack;
 using ProgParty.WieBetaaltWat.Api.Result;
-using ProgParty.Core.Extension;
 using System.Linq;
 using System.Net.Http;
-using System;
 using System.Collections.Generic;
 
 namespace ProgParty.WieBetaaltWat.Api.Scrape

@@ -2,17 +2,9 @@
 using ProgParty.WieBetaaltWat.Api.Execute;
 using ProgParty.WieBetaaltWat.Api.Result;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
@@ -67,21 +59,9 @@ namespace ProgParty.WieBetaaltWat
             param.Persons = _dataContext.LijstPersons.ToList();
 
             param.SingleList = _dataContext.Lijsten.FirstOrDefault(c => int.Parse(c.ProjectId) == _dataContext.ProjectId);
-
-            //OverviewResult overviewResult = new OverviewResult();
-            //overviewResult.ListUrl = _dataContext.
-            //param.SingleList = PaymentBy.SelectedValue as InvoerItemPerson;
-
-            //param.SingleList = overviewResult; 
-
-            //param.ProjectId = int.Parse(PageDataContext.Lijsten[(sender as ListView).SelectedIndex].ProjectId);
-            //param.Url = PageDataContext.Lijsten[(sender as ListView).SelectedIndex].ListUrl;
-            //param.LoginName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString() ?? string.Empty;
-            //param.LoginPassword = storage.LoadFromLocal(StorageKeys.LoggedInPassword)?.ToString() ?? string.Empty;
-
+            
             InvoerItemPostExecute invoerItemPostExecute = new InvoerItemPostExecute() { Parameters = param };
             invoerItemPostExecute.Execute();
-
 
             Frame.Navigate(typeof(MainPage));
         }
