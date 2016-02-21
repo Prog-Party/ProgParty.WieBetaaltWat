@@ -128,7 +128,7 @@ namespace ProgParty.WieBetaaltWat
             PageDataContext.ProjectId = param.ProjectId;
 
             PageDataContext.SetLijstResult(lijst.Result);
-
+            
             searchPivot.SelectedIndex = 1;
         }
 
@@ -171,11 +171,15 @@ namespace ProgParty.WieBetaaltWat
         {
             if(searchPivot.SelectedIndex == 0)
             {
+                BuyBarButton.Visibility = Visibility.Visible;
+                ContactButton.Visibility = Visibility.Visible;
                 AddItemButton.Visibility = Visibility.Collapsed;
                 ConfigButton.Visibility = Visibility.Visible;
             }
             else if (searchPivot.SelectedIndex == 1)
             {
+                BuyBarButton.Visibility = Visibility.Collapsed;
+                ContactButton.Visibility = Visibility.Collapsed;
                 AddItemButton.Visibility = Visibility.Visible;
                 ConfigButton.Visibility = Visibility.Collapsed;
             }
