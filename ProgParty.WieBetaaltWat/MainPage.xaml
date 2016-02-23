@@ -102,22 +102,15 @@
                             </ListView.ItemContainerStyle>
                             <ListView.HeaderTemplate>
                                 <DataTemplate>
-                                    <Grid x:Name="gridResult" Margin="10" >
+                                    <Grid x:Name="gridResult" Background="#0098db">
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="2*" />
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="4*" />
                                             <ColumnDefinition Width="*" />
                                         </Grid.ColumnDefinitions>
 
-                                        <TextBlock Grid.Column="0" Text="Betaald door" FontSize="11" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                        <TextBlock Grid.Column="0" Foreground="White" Margin="10,10,0,0" Text="Beschrijving" FontSize="15" TextWrapping="WrapWholeWords" TextAlignment="Left" />
 
-                                        <TextBlock Grid.Column="1" Text="Beschrijving" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                        <TextBlock Grid.Column="2" Text="Bedrag" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-
-                                        <TextBlock Grid.Column="3" Text="Datum" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                        <TextBlock Grid.Column="4" Text="Wie?" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                        <TextBlock Grid.Column="1" Foreground="White" Margin="0,10,0,10" Text="Bedrag" FontSize="15"  TextWrapping="WrapWholeWords" TextAlignment="Left" />
                                     </Grid>
                                 </DataTemplate>
                             </ListView.HeaderTemplate>
