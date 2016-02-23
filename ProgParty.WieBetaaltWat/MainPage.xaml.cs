@@ -104,16 +104,7 @@ namespace ProgParty.WieBetaaltWat
             PageDataContext.SetResult(result);
         }
         
-        private void ContactButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Core.Pages.Contact));
-        }
-
-        private void BuyBarButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Core.Pages.Shop));
-        }
-
+        
         private void GalleryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var storage = new Storage();
@@ -131,21 +122,10 @@ namespace ProgParty.WieBetaaltWat
             
             searchPivot.SelectedIndex = 1;
         }
-
-        private void LoadMoreGalleries_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void AddListButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(InvoerItem), DataContext);
-        }
-
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(Login));
-        }
+        private void ContactButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Core.Pages.Contact));
+        private void BuyBarButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Core.Pages.Shop));
+        private void AddListButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(InvoerItem), DataContext);
+        private void SettingsButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Login));
 
         private void AddEntry_Click(object sender, RoutedEventArgs e)
         {

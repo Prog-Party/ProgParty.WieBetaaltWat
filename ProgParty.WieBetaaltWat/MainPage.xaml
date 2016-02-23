@@ -83,12 +83,6 @@
                                 <ProgressRing IsActive="True" Margin="50" Background="#f0f0f0"/>
                             </StackPanel>
 
-                            <StackPanel Orientation="Vertical">
-                                <Border HorizontalAlignment="Center" Margin="0,40,0,0" >
-                                    <Button Height="80" HorizontalAlignment="Stretch" Click="LoadMoreGalleries_Click" Background="#60351d" Foreground="White" BorderBrush="Black" BorderThickness="2" Content="Meer betalingen laden" Width="260" Padding="25,10,25,10" />
-                                </Border>
-                            </StackPanel>
-
                         </StackPanel>
                     </ScrollViewer>
                 </Grid>
