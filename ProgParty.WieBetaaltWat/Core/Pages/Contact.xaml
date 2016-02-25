@@ -61,7 +61,8 @@
                 </Border>
 
                 <StackPanel Margin="10" Orientation="Horizontal" >
-                    <TextBlock FontSize="25" Padding="0" Margin="0" Text="Send e-mail: " HorizontalAlignment="Left" />
+                    <!--<TextBlock FontSize="25" Padding="0" Margin="0" Text="Send e-mail: " HorizontalAlignment="Left" />-->
+                    <TextBlock FontSize="25" Padding="0" Margin="0" Text="Verstuur e-mail: " HorizontalAlignment="Left" />
                     <HyperlinkButton Margin="10,0" Padding="0" FontSize="12" Height="25" Click="DennisMail_Click" >
                         <Border Margin="0" Padding="0" BorderBrush="Black" BorderThickness="0,0,0,1">
                             <TextBlock Foreground="Black" Margin="0" Padding="0" Text="dennis.rosenbaum@outlook.com"></TextBlock>
