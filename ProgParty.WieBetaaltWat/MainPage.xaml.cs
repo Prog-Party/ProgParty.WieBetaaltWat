@@ -142,11 +142,6 @@ namespace ProgParty.WieBetaaltWat
 
         }
 
-        private void gridResult_PointerReleased(object sender, PointerRoutedEventArgs e)
-        {
-            
-        }
-
         private void searchPivot_PivotItemLoaded(Pivot sender, PivotItemEventArgs args)
         {
             if(searchPivot.SelectedIndex == 0)

@@ -118,12 +118,9 @@
                                 <DataTemplate>
                                     <Grid x:Name="ListOverview" HorizontalAlignment="Stretch" Background="{Binding Alternation.Background}">
                                         <Border BorderThickness="1" BorderBrush="#b1c4df" >
-                                            <Grid x:Name="GridResult" Margin="10" PointerReleased="gridResult_PointerReleased" >
+                                            <Grid x:Name="GridResult" Margin="10" >
                                                 <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="2*" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="4*" />
                                                     <ColumnDefinition Width="*" />
                                                 </Grid.ColumnDefinitions>
                                                 <Grid.RowDefinitions>
@@ -131,13 +128,26 @@
                                                     <RowDefinition Height="*" />
                                                 </Grid.RowDefinitions>
 
-                                                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding PaidBy}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Description}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                                <TextBlock Grid.Row="0" Margin="0,10,0,10" Grid.Column="0" Text="{Binding Description}" FontWeight="Bold" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                                <TextBlock Grid.Row="0" Margin="0,10,0,10" Grid.Column="1" Text="{Binding Amount}" FontWeight="Bold" TextWrapping="WrapWholeWords" TextAlignment="Left" />
 
-                                                <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Amount}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                                <TextBlock Grid.Row="0" Grid.Column="3"  Text="{Binding Date}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
-                                                <TextBlock Grid.Row="0" Grid.Column="4" Text="{Binding WhoElse}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
+                                                <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Vertical">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Betaald door: "></TextBlock>
+                                                        <TextBlock Text="{Binding PaidBy}" TextWrapping="WrapWholeWords" />
+                                                    </StackPanel>
 
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Datum: "></TextBlock>
+                                                        <TextBlock Text="{Binding Date}" TextWrapping="WrapWholeWords" />
+                                                    </StackPanel>
+
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <TextBlock Text="Deelnemers:"></TextBlock>
+                                                    </StackPanel>
+
+                                                    <TextBlock Text="{Binding WhoElse}" TextWrapping="WrapWholeWords" />
+                                                </StackPanel>
                                                 <!--<StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="StackPanelResultDetails" Visibility="Visible" Background="Red" Orientation="Vertical">
                                                     <TextBlock Text="{Binding Amount}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
                                                     <TextBlock Text="{Binding Date}" TextWrapping="WrapWholeWords" TextAlignment="Left" />
