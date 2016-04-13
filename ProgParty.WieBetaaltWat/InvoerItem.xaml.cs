@@ -68,7 +68,7 @@ namespace ProgParty.WieBetaaltWat
                 toastMessage.Notify("De invoer is toegevoegd aan de lijst.", Windows.UI.Notifications.ToastTemplateType.ToastImageAndText02, 3);
             }
 
-            Frame.Navigate(typeof(MainPage));
+            Frame.Navigate(typeof(MainPage), DataContext);
         }
 
         private void LayoutRoot_Loaded(object sender, RoutedEventArgs e)

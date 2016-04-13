@@ -77,9 +77,16 @@ namespace ProgParty.WieBetaaltWat
                 return;
             }
         }
-        
-        protected override void OnNavigatedTo(NavigationEventArgs e) => Register.RegisterOnNavigatedTo(Config.Instance.LicenseInformation);
-        
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            var context = e.Parameter as WieBetaaltWatDataContext;
+            if(context != null)
+                DataContext = context;
+
+            Register.RegisterOnNavigatedTo(Config.Instance.LicenseInformation);
+        }
+
         private void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
         {
             RedirectPageForLoggedin();
