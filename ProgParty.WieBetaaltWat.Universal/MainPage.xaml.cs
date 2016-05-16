@@ -53,8 +53,7 @@ namespace ProgParty.WieBetaaltWat.Universal
 
             Register.Execute();
 
-            PageDataContext = new WieBetaaltWatDataContext();
-            DataContext = PageDataContext;
+            DataContext = PageDataContext = new WieBetaaltWatDataContext();
         }
 
         private void RedirectPageForLoggedin()
@@ -87,9 +86,12 @@ namespace ProgParty.WieBetaaltWat.Universal
         {
             var context = e.Parameter as WieBetaaltWatDataContext;
             if(context != null)
-                DataContext = context;
+                DataContext = PageDataContext = context;
 
-            Register.RegisterOnNavigatedTo(Config.Instance.LicenseInformation);
+            //Register.RegisterOnNavigatedTo(Config.Instance.LicenseInformation);
+
+            searchPivot.SelectedIndex = 0;
+            galleryList.SelectedItem = null;
         }
 
         private void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
@@ -98,7 +100,7 @@ namespace ProgParty.WieBetaaltWat.Universal
 
             ShowMyLists();
 
-            Register.RegisterOnLoaded();
+            //Register.RegisterOnLoaded();
         }
 
         private void ShowMyLists()
@@ -121,19 +123,23 @@ namespace ProgParty.WieBetaaltWat.Universal
         {
             var storage = new Storage.Storage();
             var param = new ApiUniversal.Parameter.LijstParameter();
-            
-            param.ProjectId = int.Parse(PageDataContext.Lijsten[(sender as ListView).SelectedIndex].ProjectId);
-            param.Url = PageDataContext.Lijsten[(sender as ListView).SelectedIndex].ListUrl;
-            param.LoginName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString() ?? string.Empty;
-            param.LoginPassword = storage.LoadFromLocal(StorageKeys.LoggedInPassword)?.ToString() ?? string.Empty;
-            LijstExecute lijst = new LijstExecute() { Parameters = param };
-            lijst.Execute();
-            
-            PageDataContext.ProjectId = param.ProjectId;
 
-            PageDataContext.SetLijstResult(lijst.Result);
+            var selectedIndex = (sender as ListView).SelectedIndex;
+            if (PageDataContext.Lijsten.Any() && selectedIndex != -1)
+            {
+                param.ProjectId = int.Parse(PageDataContext.Lijsten[selectedIndex].ProjectId);
+                param.Url = PageDataContext.Lijsten[(sender as ListView).SelectedIndex].ListUrl;
+                param.LoginName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString() ?? string.Empty;
+                param.LoginPassword = storage.LoadFromLocal(StorageKeys.LoggedInPassword)?.ToString() ?? string.Empty;
+                LijstExecute lijst = new LijstExecute() { Parameters = param };
+                lijst.Execute();
             
-            searchPivot.SelectedIndex = 1;
+                PageDataContext.ProjectId = param.ProjectId;
+
+                PageDataContext.SetLijstResult(lijst.Result);
+            
+                searchPivot.SelectedIndex = 1;
+            }
         }
         private void ContactButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Contact));
         private void BuyBarButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Shop));
