@@ -17,7 +17,6 @@ namespace ProgParty.WieBetaaltWat.Universal
         {
             this.InitializeComponent();
             SetRemoveAdvertisements();
-            SetRemoveCompanyAds();
             SetDonations();
         }
 
@@ -37,27 +36,6 @@ namespace ProgParty.WieBetaaltWat.Universal
             } else
             {
                 RemoveAdsBought.Visibility = Visibility.Collapsed;
-            }
-        }
-
-        private async void BuyRemoveCompanyAds_Click(object sender, RoutedEventArgs e)
-        {
-            string token = Common.InAppPurchase.TokenRemoveCompanies;
-            AdsClick(token, () => { SetRemoveCompanyAds(); });
-           
-        }
-
-        private void SetRemoveCompanyAds()
-        {
-            if (Config.Instance.LicenseInformation.ProductLicenses[Common.InAppPurchase.TokenRemoveCompanies].IsActive)
-            {
-                RemoveCompanyAdsButton.Visibility = Visibility.Collapsed;
-                RemoveCompanyAdsPrice.Visibility = Visibility.Collapsed;
-                RemoveCompanyAdsBought.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                RemoveCompanyAdsBought.Visibility = Visibility.Collapsed;
             }
         }
 

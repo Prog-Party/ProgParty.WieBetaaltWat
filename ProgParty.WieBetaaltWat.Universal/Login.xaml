@@ -85,17 +85,14 @@
                             Height="80"
                             Margin="0,30,0,0"
                             HorizontalAlignment="Center"
-                            Background="#60351d"
-                            BorderBrush="Black"
-                            BorderThickness="2"
+                            Background="#0098db"
                             Click="LoginButton_Click"
+                            FontSize="30"
                             Foreground="White"
                             Padding="0">
                         <StackPanel Orientation="Horizontal">
-                            <Image Height="40"
-                                   Margin="0,0,0,0"
-                                   Source="/Assets/Icons/login.png" />
-                            <TextBlock Margin="10,10,0,0" Text="Inloggen" />
+                            <Image Height="40" Source="/Assets/Icons/login.png" />
+                            <TextBlock Margin="12,0,0,0" Text="Inloggen" />
                         </StackPanel>
                     </Button>
                 </StackPanel>
