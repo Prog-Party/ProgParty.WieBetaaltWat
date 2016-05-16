@@ -1,4 +1,4 @@
-﻿using ProgParty.Core.Storage;
+﻿using ProgParty.WieBetaaltWat.Universal.Storage;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -16,7 +16,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace ProgParty.WieBetaaltWat
+namespace ProgParty.WieBetaaltWat.Universal
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -27,7 +27,7 @@ namespace ProgParty.WieBetaaltWat
         {
             this.InitializeComponent();
 
-            ConfigButton.IsEnabled = false;
+            //ConfigButton.IsEnabled = false;
 
             //AddListButton.IsEnabled = false;
         }
@@ -43,7 +43,7 @@ namespace ProgParty.WieBetaaltWat
 
         public void LayoutRoot_Loaded(object sender, RoutedEventArgs e)
         {
-            var storage = new Storage();
+            var storage = new Storage.Storage();
             string loggedInName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString();
 
             if (string.IsNullOrEmpty(loggedInName))
@@ -62,11 +62,11 @@ namespace ProgParty.WieBetaaltWat
             string password = PasswordTextBox.Password;
 
             //do login, if worked, save email and password
-            var loginScrape = new Api.Authentication.LoginScrape(email, password);
+            var loginScrape = new ApiUniversal.Authentication.LoginScrape(email, password);
             bool isLoggedIn = loginScrape.Execute();
             if (isLoggedIn)
             {
-                var storage = new Storage();
+                var storage = new Storage.Storage();
                 storage.StoreInLocal(StorageKeys.LoggedInName, email);
                 storage.StoreInLocal(StorageKeys.LoggedInPassword, password);
 
@@ -78,26 +78,9 @@ namespace ProgParty.WieBetaaltWat
                 ErrorMessage.Visibility = Visibility.Visible;
             }
         }
-
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void BuyBarButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ContactButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void AddListButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
+        private void ContactButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Core.Pages.Contact));
+        private void BuyBarButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Core.Pages.Shop));
 
         private void LoginTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {

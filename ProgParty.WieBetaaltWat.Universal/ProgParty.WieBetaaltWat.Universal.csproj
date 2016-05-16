@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ProgParty.WieBetaaltWat.Universal</RootNamespace>
     <AssemblyName>ProgParty.WieBetaaltWat.Universal</AssemblyName>
-    <DefaultLanguage>en-US</DefaultLanguage>
+    <DefaultLanguage>nl-NL</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
@@ -95,6 +95,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Common\Connection.cs" />
+    <Compile Include="Common\InAppPurchase.cs" />
+    <Compile Include="Contact.xaml.cs">
+      <DependentUpon>Contact.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core\License\LicenseInfo.cs" />
     <Compile Include="Core\Pages\Contact.xaml.cs">
       <DependentUpon>Contact.xaml</DependentUpon>
@@ -112,16 +117,20 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StorageKeys.cs" />
+    <Compile Include="Review\Review.cs" />
+    <Compile Include="Shop.xaml.cs">
+      <DependentUpon>Shop.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Storage\Storage.cs" />
     <Compile Include="WieBetaaltWatDataContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
       <SubType>Designer</SubType>
     </AppxManifest>
-    <None Include="ProgParty.WieBetaaltWat.Universal_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\logo-nl.png" />
     <Content Include="Core\Assets\banner_Jens_Dennis.png" />
     <Content Include="Core\Assets\foto_jens_dennis.png" />
     <Content Include="Core\Assets\foto_jens_dennis_mirror.png" />
@@ -146,7 +155,11 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="App.xaml">
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Contact.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -170,12 +183,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ProgParty.WieBetaaltWat.ApiUniversal\ProgParty.WieBetaaltWat.ApiUniversal.csproj">
-      <Project>{6b4cbfd5-f6c5-4244-851b-8d5625789d52}</Project>
-      <Name>ProgParty.WieBetaaltWat.ApiUniversal</Name>
-    </ProjectReference>
+    <Page Include="Shop.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <SDKReference Include="Microsoft.Advertising.Xaml, Version=10.0">
@@ -184,6 +195,17 @@
     <SDKReference Include="Microsoft.VCLibs, Version=14.0">
       <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
     </SDKReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ProgParty.Core">
+      <HintPath>..\Bin\ProgParty.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ProgParty.WieBetaaltWat.ApiUniversal\ProgParty.WieBetaaltWat.ApiUniversal.csproj">
+      <Project>{6b4cbfd5-f6c5-4244-851b-8d5625789d52}</Project>
+      <Name>ProgParty.WieBetaaltWat.ApiUniversal</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

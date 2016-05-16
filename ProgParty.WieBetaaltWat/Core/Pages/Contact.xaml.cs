@@ -19,8 +19,6 @@ namespace ProgParty.Core.Pages
             this.InitializeComponent();
 
             SetFooterImage();
-
-            Core.Track.Telemetry.Instance.PageVisit(this);
         }
 
         public Contact(SolidColorBrush foregroundColor, SolidColorBrush backgroundColor, bool imageMirrored = false)
@@ -29,8 +27,6 @@ namespace ProgParty.Core.Pages
 
             SetColors(foregroundColor, backgroundColor);
             SetFooterImage(imageMirrored);
-
-            Core.Track.Telemetry.Instance.PageVisit(this);
         }
 
 
@@ -72,7 +68,6 @@ namespace ProgParty.Core.Pages
         
         private async void ButtonReview_Click(object sender, RoutedEventArgs e)
         {
-            Core.Track.Telemetry.Instance.ReviewButtonClicked();
             await Review.Review.Instance.Execute();
         }
 

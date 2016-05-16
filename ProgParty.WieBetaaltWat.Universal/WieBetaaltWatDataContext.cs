@@ -6,7 +6,7 @@ using Windows.UI.Xaml;
 using System;
 using System.Collections.Generic;
 
-namespace ProgParty.WieBetaaltWat
+namespace ProgParty.WieBetaaltWat.Universal
 {
     public class WieBetaaltWatDataContext : INotifyPropertyChanged
     {

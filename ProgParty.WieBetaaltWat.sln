@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgParty.WieBetaaltWat.Uni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProgParty.WieBetaaltWat.ApiUniversal", "ProgParty.WieBetaaltWat.ApiUniversal\ProgParty.WieBetaaltWat.ApiUniversal.csproj", "{6B4CBFD5-F6C5-4244-851B-8D5625789D52}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bin", "Bin", "{D0D4E461-3E5D-4AE8-95B1-DFF575452064}"
+	ProjectSection(SolutionItems) = preProject
+		Bin\ProgParty.Core.dll = Bin\ProgParty.Core.dll
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
