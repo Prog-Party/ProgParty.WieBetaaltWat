@@ -87,23 +87,27 @@
                                                                    Grid.Column="0"
                                                                    FontSize="11"
                                                                    FontWeight="Bold"
+                                                                   Foreground="Black"
                                                                    Text="{Binding ListName}"
                                                                    TextAlignment="Left"
                                                                    TextWrapping="WrapWholeWords" />
 
                                                         <TextBlock Grid.Row="1"
                                                                    Grid.Column="0"
+                                                                   Foreground="Black"
                                                                    Text="Mijn saldo"
                                                                    TextAlignment="Left"
                                                                    TextWrapping="WrapWholeWords" />
                                                         <TextBlock Grid.Row="1"
                                                                    Grid.Column="1"
+                                                                   Foreground="Black"
                                                                    Text="{Binding MyBalance}"
                                                                    TextAlignment="Left"
                                                                    TextWrapping="WrapWholeWords" />
 
                                                         <TextBlock Grid.Row="2"
                                                                    Grid.Column="0"
+                                                                   Foreground="Black"
                                                                    Text="Hoogste saldo"
                                                                    TextAlignment="Left"
                                                                    TextWrapping="WrapWholeWords" />
@@ -116,6 +120,7 @@
 
                                                         <TextBlock Grid.Row="3"
                                                                    Grid.Column="0"
+                                                                   Foreground="Black"
                                                                    Text="Laagste saldo"
                                                                    TextAlignment="Left"
                                                                    TextWrapping="WrapWholeWords" />

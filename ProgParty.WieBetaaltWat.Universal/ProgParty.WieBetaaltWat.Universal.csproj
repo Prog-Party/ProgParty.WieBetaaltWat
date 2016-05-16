@@ -101,12 +101,6 @@
       <DependentUpon>Contact.xaml</DependentUpon>
     </Compile>
     <Compile Include="Core\License\LicenseInfo.cs" />
-    <Compile Include="Core\Pages\Contact.xaml.cs">
-      <DependentUpon>Contact.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Core\Pages\Shop.xaml.cs">
-      <DependentUpon>Shop.xaml</DependentUpon>
-    </Compile>
     <Compile Include="InvoerItem.xaml.cs">
       <DependentUpon>InvoerItem.xaml</DependentUpon>
     </Compile>
@@ -130,6 +124,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Icons\login.png" />
     <Content Include="Assets\logo-nl.png" />
     <Content Include="Core\Assets\banner_Jens_Dennis.png" />
     <Content Include="Core\Assets\foto_jens_dennis.png" />
@@ -163,14 +158,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Core\Pages\Contact.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Core\Pages\Shop.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="InvoerItem.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -189,6 +176,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <SDKReference Include="Microsoft.AdMediator.Universal, Version=1.0">
+      <Name>Microsoft Advertising Universal SDK</Name>
+    </SDKReference>
     <SDKReference Include="Microsoft.Advertising.Xaml, Version=10.0">
       <Name>Microsoft Advertising SDK for XAML</Name>
     </SDKReference>

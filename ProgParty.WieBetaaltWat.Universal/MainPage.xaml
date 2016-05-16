@@ -90,23 +90,27 @@
                                                                    Grid.Column="0"
                                                                    FontSize="11"
                                                                    FontWeight="Bold"
+                                                                   Foreground="Black"
                                                                    Text="{Binding ListName}"
                                                                    TextAlignment="Left"
                                                                    TextWrapping="WrapWholeWords" />
 
                                                         <TextBlock Grid.Row="1"
                                                                    Grid.Column="0"
+                                                                   Foreground="Black"
                                                                    Text="Mijn saldo"
                                                                    TextAlignment="Left"
                                                                    TextWrapping="WrapWholeWords" />
                                                         <TextBlock Grid.Row="1"
                                                                    Grid.Column="1"
+                                                                   Foreground="Black"
                                                                    Text="{Binding MyBalance}"
                                                                    TextAlignment="Left"
                                                                    TextWrapping="WrapWholeWords" />
 
                                                         <TextBlock Grid.Row="2"
                                                                    Grid.Column="0"
+                                                                   Foreground="Black"
                                                                    Text="Hoogste saldo"
                                                                    TextAlignment="Left"
                                                                    TextWrapping="WrapWholeWords" />
@@ -119,6 +123,7 @@
 
                                                         <TextBlock Grid.Row="3"
                                                                    Grid.Column="0"
+                                                                   Foreground="Black"
                                                                    Text="Laagste saldo"
                                                                    TextAlignment="Left"
                                                                    TextWrapping="WrapWholeWords" />
@@ -129,24 +134,19 @@
                                                                    TextAlignment="Left"
                                                                    TextWrapping="WrapWholeWords" />
                                                     </Grid>
-                                                    <StackPanel Grid.Column="1"
-                                                                Margin="10,0"
-                                                                Background="White"
-                                                                Orientation="Vertical">
-                                                        <Button x:Name="AddEntry"
-                                                                Width="120"
-                                                                Height="60"
-                                                                HorizontalAlignment="Stretch"
-                                                                Background="#0098db"
-                                                                BorderBrush="#000000"
-                                                                BorderThickness="2"
-                                                                Click="AddEntry_Click"
-                                                                CommandParameter="{Binding ProjectId}"
-                                                                Content="Nieuwe invoer"
-                                                                FontSize="10"
-                                                                Foreground="White"
-                                                                Padding="25,10,25,10" />
-                                                    </StackPanel>
+
+                                                    <Button x:Name="AddEntry"
+                                                            Grid.Column="1"
+                                                            Width="120"
+                                                            Height="60"
+                                                            HorizontalAlignment="Stretch"
+                                                            Background="#0098db"
+                                                            Click="AddEntry_Click"
+                                                            CommandParameter="{Binding ProjectId}"
+                                                            Content="Nieuwe invoer"
+                                                            FontSize="10"
+                                                            Foreground="White"
+                                                            Padding="25,10,25,10" />
                                                 </Grid>
                                             </Border>
                                         </Grid>
@@ -190,32 +190,6 @@
                                     <Setter Property="HorizontalContentAlignment" Value="Stretch" />
                                 </Style>
                             </ListView.ItemContainerStyle>
-                            <ListView.HeaderTemplate>
-                                <DataTemplate>
-                                    <Grid x:Name="gridResult" Background="#0098db">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="4*" />
-                                            <ColumnDefinition Width="*" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <TextBlock Grid.Column="0"
-                                                   Margin="10,10,0,0"
-                                                   FontSize="15"
-                                                   Foreground="White"
-                                                   Text="Beschrijving"
-                                                   TextAlignment="Left"
-                                                   TextWrapping="WrapWholeWords" />
-
-                                        <TextBlock Grid.Column="1"
-                                                   Margin="0,10,0,10"
-                                                   FontSize="15"
-                                                   Foreground="White"
-                                                   Text="Bedrag"
-                                                   TextAlignment="Left"
-                                                   TextWrapping="WrapWholeWords" />
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.HeaderTemplate>
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Grid x:Name="ListOverview"
@@ -236,6 +210,7 @@
                                                            Grid.Column="0"
                                                            Margin="0,10,0,10"
                                                            FontWeight="Bold"
+                                                           Foreground="Black"
                                                            Text="{Binding Description}"
                                                            TextAlignment="Left"
                                                            TextWrapping="WrapWholeWords" />
@@ -243,6 +218,7 @@
                                                            Grid.Column="1"
                                                            Margin="0,10,0,10"
                                                            FontWeight="Bold"
+                                                           Foreground="Black"
                                                            Text="{Binding Amount}"
                                                            TextAlignment="Left"
                                                            TextWrapping="WrapWholeWords" />
@@ -251,20 +227,33 @@
                                                             Grid.ColumnSpan="2"
                                                             Orientation="Vertical">
                                                     <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="Betaald door: " />
-                                                        <TextBlock Text="{Binding PaidBy}" TextWrapping="WrapWholeWords" />
+                                                        <TextBlock Margin="0 0 10 0"
+                                                                   Foreground="Black"
+                                                                   Text="Betaald door: " />
+                                                        <TextBlock Foreground="Black"
+                                                                   Text="{Binding PaidBy}"
+                                                                   TextWrapping="WrapWholeWords" />
                                                     </StackPanel>
 
                                                     <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="Datum: " />
-                                                        <TextBlock Text="{Binding Date}" TextWrapping="WrapWholeWords" />
+                                                        <TextBlock Margin="0 0 10 0"
+                                                                   Foreground="Black"
+                                                                   Text="Datum: " />
+                                                        <TextBlock Foreground="Black"
+                                                                   Text="{Binding Date}"
+                                                                   TextWrapping="WrapWholeWords" />
                                                     </StackPanel>
 
                                                     <StackPanel Orientation="Horizontal">
-                                                        <TextBlock Text="Deelnemers:" />
+                                                        <TextBlock Margin="0 0 10 0"
+                                                                   Foreground="Black"
+                                                                   Text="Deelnemers:" />
                                                     </StackPanel>
 
-                                                    <TextBlock Text="{Binding WhoElse}" TextWrapping="WrapWholeWords" />
+                                                    <TextBlock Margin="0 0 10 0"
+                                                               Foreground="Black"
+                                                               Text="{Binding WhoElse}"
+                                                               TextWrapping="WrapWholeWords" />
                                                 </StackPanel>
                                                 <!--<StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" x:Name="StackPanelResultDetails" Visibility="Visible" Background="Red" Orientation="Vertical">
                                                     <TextBlock Text="{Binding Amount}" TextWrapping="WrapWholeWords" TextAlignment="Left" />

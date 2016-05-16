@@ -79,8 +79,8 @@ namespace ProgParty.WieBetaaltWat.Universal
             }
         }
         
-        private void ContactButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Core.Pages.Contact));
-        private void BuyBarButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Core.Pages.Shop));
+        private void ContactButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Contact));
+        private void BuyBarButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Shop));
 
         private void LoginTextBox_KeyDown(object sender, KeyRoutedEventArgs e)
         {

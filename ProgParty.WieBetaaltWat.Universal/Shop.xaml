@@ -4,19 +4,30 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="using:ProgParty.WieBetaaltWat.Universal"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-      Background="#ffcc6e"
-      Foreground="Black"
+      Background="#60351D"
+      Foreground="#5c5b5b"
       mc:Ignorable="d">
 
     <Grid x:Name="LayoutRoot" Margin="0">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition />
-            <RowDefinition Height="Auto" />
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.Row="0">
-            <Image Source="/Assets/marktplaats-logo-720.png" />
+        <StackPanel Grid.Row="0"
+                    Background="#60351D"
+                    Orientation="Horizontal">
+            <Image Margin="30 5 0 5"
+                   HorizontalAlignment="Left"
+                   Source="/Assets/logo-nl.png" />
+
+            <TextBlock Margin="10 0 0 0"
+                       VerticalAlignment="Center"
+                       FontSize="14"
+                       FontWeight="Bold"
+                       Foreground="White"
+                       Text="Houd je gezamenlijke uitgaven overzichtelijk" />
         </StackPanel>
         <ScrollViewer Grid.Row="1"
                       Margin="10"
@@ -36,8 +47,6 @@
                         <ColumnDefinition Width="100" />
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition />
-                        <RowDefinition Height="80" />
                         <RowDefinition />
                         <RowDefinition Height="80" />
                         <RowDefinition />
@@ -77,13 +86,16 @@
                             Grid.Row="1"
                             Grid.Column="1"
                             Margin="10,0,0,20"
+                            Background="#0098db"
                             Click="BuyRemoveAds_Click"
                             Padding="0">
                         <StackPanel Orientation="Horizontal">
                             <Image Height="40"
                                    Margin="0,0,0,0"
                                    Source="Assets/sale.png" />
-                            <TextBlock Margin="10,9,0,0" Text="Koop nu" />
+                            <TextBlock Margin="10,9,0,0"
+                                       Foreground="White"
+                                       Text="Koop nu" />
                         </StackPanel>
                     </Button>
 
@@ -114,66 +126,9 @@
                             BorderBrush="Black"
                             BorderThickness="0"
                             CornerRadius="50"
-                            Padding="5">
-                        <Image Height="40"
-                               Margin="0,0,0,0"
-                               Source="/Core/Assets/icons/doc_b.png" />
-                    </Border>
+                            Padding="5" />
 
-                    <TextBlock Grid.Row="2"
-                               Grid.Column="1"
-                               Grid.ColumnSpan="2"
-                               Margin="10,0,0,0"
-                               FontSize="12"
-                               TextWrapping="Wrap">
-                        Topadvertenties op marktplaats? Nee! Wij geven de optie om de topadvertenties weg te filteren, geen reclame en sneller zoeken!
-                    </TextBlock>
-
-                    <TextBlock Name="RemoveCompanyAdsBought"
-                               Grid.Row="3"
-                               Grid.Column="1"
-                               Grid.ColumnSpan="2"
-                               Margin="10,0,0,0"
-                               FontSize="15"
-                               Foreground="Green">
-                        U heeft dit reeds aangekocht! Bedankt
-                    </TextBlock>
-                    <Button Name="RemoveCompanyAdsButton"
-                            Grid.Row="3"
-                            Grid.Column="1"
-                            Margin="10,0,0,20"
-                            Click="BuyRemoveCompanyAds_Click"
-                            Padding="0">
-                        <StackPanel Orientation="Horizontal">
-                            <Image Height="40"
-                                   Margin="0,0,0,0"
-                                   Source="Assets/sale.png" />
-                            <TextBlock Margin="10,9,0,0" Text="Koop nu" />
-                        </StackPanel>
-                    </Button>
-
-                    <StackPanel Name="RemoveCompanyAdsPrice"
-                                Grid.Row="3"
-                                Grid.Column="2"
-                                Orientation="Vertical">
-                        <Grid>
-                            <TextBlock FontSize="20"
-                                       Foreground="Red"
-                                       Text="€ 4,99"
-                                       TextAlignment="Center" />
-                            <Rectangle Width="60"
-                                       Height="2"
-                                       Fill="Red"
-                                       Stroke="Red" />
-                        </Grid>
-
-                        <TextBlock FontSize="25"
-                                   Foreground="Green"
-                                   Text="€ 2,99"
-                                   TextAlignment="Center" />
-                    </StackPanel>
-
-                    <Border Grid.Row="4"
+                    <Border Grid.Row="2"
                             Grid.Column="0"
                             Margin="5"
                             BorderBrush="Black"
@@ -185,7 +140,7 @@
                                Source="/Core/Assets/icons/donation_b.png" />
                     </Border>
 
-                    <TextBlock Grid.Row="4"
+                    <TextBlock Grid.Row="2"
                                Grid.Column="1"
                                Grid.ColumnSpan="2"
                                Margin="10,0,0,0"
@@ -195,7 +150,7 @@
                     </TextBlock>
 
                     <TextBlock Name="DonationBought"
-                               Grid.Row="5"
+                               Grid.Row="3"
                                Grid.Column="1"
                                Grid.ColumnSpan="2"
                                Margin="10,0,0,0"
@@ -205,21 +160,36 @@
                     </TextBlock>
 
                     <Button Name="DonationButton"
-                            Grid.Row="5"
+                            Grid.Row="3"
                             Grid.Column="1"
                             Margin="10,0,0,20"
+                            Background="#0098db"
                             Click="DonationButton_Click"
                             Padding="0">
                         <StackPanel Orientation="Horizontal">
                             <Image Height="40"
                                    Margin="0,0,0,0"
                                    Source="Assets/sale.png" />
-                            <TextBlock Margin="10,9,0,0" Text="Doneer nu" />
+                            <TextBlock Margin="10,9,0,0"
+                                       Foreground="White"
+                                       Text="Doneer nu" />
                         </StackPanel>
                     </Button>
 
+                    <StackPanel Name="RemoveCompanyAdsPrice"
+                                Grid.Row="3"
+                                Grid.Column="2"
+                                Orientation="Vertical">
+                        <Grid>
+                            <Rectangle Width="60"
+                                       Height="2"
+                                       Fill="Red"
+                                       Stroke="Red" />
+                        </Grid>
+                    </StackPanel>
+
                     <StackPanel Name="DonationPrice"
-                                Grid.Row="5"
+                                Grid.Row="3"
                                 Grid.Column="2"
                                 Orientation="Vertical">
                         <Grid>
@@ -242,21 +212,17 @@
             </StackPanel>
         </ScrollViewer>
         <Grid Grid.Row="2">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="auto" />
-            </Grid.RowDefinitions>
             <Border Grid.Row="0"
                     Margin="0"
                     Style="{StaticResource ButtonBorder}">
-                <Button Name="BackToHomeButton" Click="BackToHome_Click">
+                <Button Name="BackToHomeButton"
+                        Background="#60351d"
+                        Click="BackToHome_Click">
                     <StackPanel Orientation="Horizontal">
-                        <!--<Image Source="Assets/sale.png" Height="23"></Image>-->
-                        <TextBlock Margin="10,0,0,0" Text="Terug naar home" />
+                        <TextBlock Foreground="White" Text="Terug naar home" />
                     </StackPanel>
                 </Button>
             </Border>
         </Grid>
-
     </Grid>
 </Page>
