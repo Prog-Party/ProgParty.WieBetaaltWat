@@ -1,0 +1,262 @@
+﻿<Page x:Class="ProgParty.WieBetaaltWat.Universal.Shop"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:ProgParty.WieBetaaltWat.Universal"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      Background="#ffcc6e"
+      Foreground="Black"
+      mc:Ignorable="d">
+
+    <Grid x:Name="LayoutRoot" Margin="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <Image Source="/Assets/marktplaats-logo-720.png" />
+        </StackPanel>
+        <ScrollViewer Grid.Row="1"
+                      Margin="10"
+                      Background="White"
+                      Padding="10">
+            <StackPanel Orientation="Vertical">
+                <TextBlock FontSize="20" TextAlignment="Center">Support ons</TextBlock>
+                <TextBlock Margin="0,5,0,5"
+                           FontSize="13"
+                           TextWrapping="Wrap">
+                    Door een aankoop te doen krijg je niet alleen iets tofs voor jezelf, je ondersteunt ook twee dudes die zonder winstoogmerk keihard aan het werk zijn om een super duper te gekke marktplaats app aan het maken zijn.
+                </TextBlock>
+                <Grid Margin="0,15,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="60" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="100" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition Height="80" />
+                        <RowDefinition />
+                        <RowDefinition Height="80" />
+                        <RowDefinition />
+                        <RowDefinition Height="80" />
+                    </Grid.RowDefinitions>
+
+                    <Border Grid.Row="0"
+                            Grid.Column="0"
+                            Margin="5"
+                            BorderBrush="Black"
+                            BorderThickness="0"
+                            CornerRadius="50"
+                            Padding="5">
+                        <Image Height="40"
+                               Margin="0,0,0,0"
+                               Source="/Core/Assets/icons/doc_b.png" />
+                    </Border>
+                    <TextBlock Grid.Row="0"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"
+                               Margin="10,0,0,0"
+                               FontSize="12"
+                               TextWrapping="Wrap">
+                        Verwijder advertenties onderaan de pagina, zo is er meer ruimte om de Marktplaats advertenties te zien.
+                    </TextBlock>
+
+                    <TextBlock Name="RemoveAdsBought"
+                               Grid.Row="1"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"
+                               Margin="10,0,0,0"
+                               FontSize="15"
+                               Foreground="Green">
+                        U heeft dit reeds aangekocht! Bedankt
+                    </TextBlock>
+                    <Button Name="RemoveAdsButton"
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Margin="10,0,0,20"
+                            Click="BuyRemoveAds_Click"
+                            Padding="0">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Height="40"
+                                   Margin="0,0,0,0"
+                                   Source="Assets/sale.png" />
+                            <TextBlock Margin="10,9,0,0" Text="Koop nu" />
+                        </StackPanel>
+                    </Button>
+
+                    <StackPanel Name="RemoveAdsPrice"
+                                Grid.Row="1"
+                                Grid.Column="2"
+                                Orientation="Vertical">
+                        <Grid>
+                            <TextBlock FontSize="20"
+                                       Foreground="Red"
+                                       Text="€ 1,99"
+                                       TextAlignment="Center" />
+                            <Rectangle Width="60"
+                                       Height="2"
+                                       Fill="Red"
+                                       Stroke="Red" />
+                        </Grid>
+
+                        <TextBlock FontSize="25"
+                                   Foreground="Green"
+                                   Text="€ 0,99"
+                                   TextAlignment="Center" />
+                    </StackPanel>
+
+                    <Border Grid.Row="2"
+                            Grid.Column="0"
+                            Margin="5"
+                            BorderBrush="Black"
+                            BorderThickness="0"
+                            CornerRadius="50"
+                            Padding="5">
+                        <Image Height="40"
+                               Margin="0,0,0,0"
+                               Source="/Core/Assets/icons/doc_b.png" />
+                    </Border>
+
+                    <TextBlock Grid.Row="2"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"
+                               Margin="10,0,0,0"
+                               FontSize="12"
+                               TextWrapping="Wrap">
+                        Topadvertenties op marktplaats? Nee! Wij geven de optie om de topadvertenties weg te filteren, geen reclame en sneller zoeken!
+                    </TextBlock>
+
+                    <TextBlock Name="RemoveCompanyAdsBought"
+                               Grid.Row="3"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"
+                               Margin="10,0,0,0"
+                               FontSize="15"
+                               Foreground="Green">
+                        U heeft dit reeds aangekocht! Bedankt
+                    </TextBlock>
+                    <Button Name="RemoveCompanyAdsButton"
+                            Grid.Row="3"
+                            Grid.Column="1"
+                            Margin="10,0,0,20"
+                            Click="BuyRemoveCompanyAds_Click"
+                            Padding="0">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Height="40"
+                                   Margin="0,0,0,0"
+                                   Source="Assets/sale.png" />
+                            <TextBlock Margin="10,9,0,0" Text="Koop nu" />
+                        </StackPanel>
+                    </Button>
+
+                    <StackPanel Name="RemoveCompanyAdsPrice"
+                                Grid.Row="3"
+                                Grid.Column="2"
+                                Orientation="Vertical">
+                        <Grid>
+                            <TextBlock FontSize="20"
+                                       Foreground="Red"
+                                       Text="€ 4,99"
+                                       TextAlignment="Center" />
+                            <Rectangle Width="60"
+                                       Height="2"
+                                       Fill="Red"
+                                       Stroke="Red" />
+                        </Grid>
+
+                        <TextBlock FontSize="25"
+                                   Foreground="Green"
+                                   Text="€ 2,99"
+                                   TextAlignment="Center" />
+                    </StackPanel>
+
+                    <Border Grid.Row="4"
+                            Grid.Column="0"
+                            Margin="5"
+                            BorderBrush="Black"
+                            BorderThickness="0"
+                            CornerRadius="50"
+                            Padding="5">
+                        <Image Height="40"
+                               Margin="0,0,0,0"
+                               Source="/Core/Assets/icons/donation_b.png" />
+                    </Border>
+
+                    <TextBlock Grid.Row="4"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"
+                               Margin="10,0,0,0"
+                               FontSize="12"
+                               TextWrapping="Wrap">
+                        Steun Jens en Dennis, ze verdienen een ijsje. Jens is een chocolade fan. Dennis geeft de voorkeur aan vanille.
+                    </TextBlock>
+
+                    <TextBlock Name="DonationBought"
+                               Grid.Row="5"
+                               Grid.Column="1"
+                               Grid.ColumnSpan="2"
+                               Margin="10,0,0,0"
+                               FontSize="15"
+                               Foreground="Green">
+                        U heeft dit reeds aangekocht! Bedankt
+                    </TextBlock>
+
+                    <Button Name="DonationButton"
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Margin="10,0,0,20"
+                            Click="DonationButton_Click"
+                            Padding="0">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Height="40"
+                                   Margin="0,0,0,0"
+                                   Source="Assets/sale.png" />
+                            <TextBlock Margin="10,9,0,0" Text="Doneer nu" />
+                        </StackPanel>
+                    </Button>
+
+                    <StackPanel Name="DonationPrice"
+                                Grid.Row="5"
+                                Grid.Column="2"
+                                Orientation="Vertical">
+                        <Grid>
+                            <TextBlock FontSize="20"
+                                       Foreground="Red"
+                                       Text="€ 4,99"
+                                       TextAlignment="Center" />
+                            <Rectangle Width="60"
+                                       Height="2"
+                                       Fill="Red"
+                                       Stroke="Red" />
+                        </Grid>
+
+                        <TextBlock FontSize="25"
+                                   Foreground="Green"
+                                   Text="€ 2,99"
+                                   TextAlignment="Center" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0"
+                    Margin="0"
+                    Style="{StaticResource ButtonBorder}">
+                <Button Name="BackToHomeButton" Click="BackToHome_Click">
+                    <StackPanel Orientation="Horizontal">
+                        <!--<Image Source="Assets/sale.png" Height="23"></Image>-->
+                        <TextBlock Margin="10,0,0,0" Text="Terug naar home" />
+                    </StackPanel>
+                </Button>
+            </Border>
+        </Grid>
+
+    </Grid>
+</Page>

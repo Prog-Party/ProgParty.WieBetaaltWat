@@ -1,8 +1,9 @@
 ﻿using ProgParty.Core;
-using ProgParty.Core.Storage;
-using ProgParty.WieBetaaltWat.Api.Execute;
+using ProgParty.WieBetaaltWat.ApiUniversal.Execute;
+using ProgParty.WieBetaaltWat.Universal.Storage;
 using System.Linq;
 using Windows.ApplicationModel.Store;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -10,7 +11,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=391641
 
-namespace ProgParty.WieBetaaltWat
+namespace ProgParty.WieBetaaltWat.Universal
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -20,6 +21,10 @@ namespace ProgParty.WieBetaaltWat
         public WieBetaaltWatDataContext PageDataContext { get; set; }
         public MainPage()
         {
+            new Connection();
+            if (!Connection.HasInternetAccess)
+                new MessageDialog("Geen internet verbinding aanwezig").ShowAsync();
+
             this.InitializeComponent();
 
             NavigationCacheMode = NavigationCacheMode.Required;
@@ -54,10 +59,10 @@ namespace ProgParty.WieBetaaltWat
 
         private void RedirectPageForLoggedin()
         {
-            if (Api.Auth.IsLoggedIn)
+            if (ApiUniversal.Auth.IsLoggedIn)
                 return;
 
-            var storage = new Storage();
+            var storage = new Storage.Storage();
 
             string loggedInName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString() ?? string.Empty;
             string loggedInPassword = storage.LoadFromLocal(StorageKeys.LoggedInPassword)?.ToString() ?? string.Empty;
@@ -68,7 +73,7 @@ namespace ProgParty.WieBetaaltWat
                 return;
             }
 
-            var loginScrape = new Api.Authentication.LoginScrape(loggedInName, loggedInPassword);
+            var loginScrape = new ApiUniversal.Authentication.LoginScrape(loggedInName, loggedInPassword);
             bool isLoggedIn = loginScrape.Execute();
 
             if (!isLoggedIn)
@@ -98,8 +103,8 @@ namespace ProgParty.WieBetaaltWat
 
         private void ShowMyLists()
         {
-            var storage = new Storage();
-            var param = new Api.Parameter.OverviewParameter();
+            var storage = new Storage.Storage();
+            var param = new ApiUniversal.Parameter.OverviewParameter();
             param.LoginName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString() ?? string.Empty;
             param.LoginPassword = storage.LoadFromLocal(StorageKeys.LoggedInPassword)?.ToString() ?? string.Empty;
 
@@ -114,8 +119,9 @@ namespace ProgParty.WieBetaaltWat
         
         private void GalleryList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var storage = new Storage();
-            var param = new Api.Parameter.LijstParameter();
+            var storage = new Storage.Storage();
+            var param = new ApiUniversal.Parameter.LijstParameter();
+            
             param.ProjectId = int.Parse(PageDataContext.Lijsten[(sender as ListView).SelectedIndex].ProjectId);
             param.Url = PageDataContext.Lijsten[(sender as ListView).SelectedIndex].ListUrl;
             param.LoginName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString() ?? string.Empty;
@@ -129,8 +135,8 @@ namespace ProgParty.WieBetaaltWat
             
             searchPivot.SelectedIndex = 1;
         }
-        private void ContactButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Core.Pages.Contact));
-        private void BuyBarButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Core.Pages.Shop));
+        private void ContactButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Contact));
+        private void BuyBarButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Shop));
         private void AddListButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(InvoerItem), DataContext);
         private void SettingsButton_Click(object sender, RoutedEventArgs e) => Frame.Navigate(typeof(Login));
 

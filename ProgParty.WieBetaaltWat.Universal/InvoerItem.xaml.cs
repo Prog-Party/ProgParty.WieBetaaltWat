@@ -1,6 +1,6 @@
-﻿using ProgParty.Core.Storage;
-using ProgParty.WieBetaaltWat.Api.Execute;
-using ProgParty.WieBetaaltWat.Api.Result;
+﻿using ProgParty.WieBetaaltWat.Universal.Storage;
+using ProgParty.WieBetaaltWat.ApiUniversal.Execute;
+using ProgParty.WieBetaaltWat.ApiUniversal.Result;
 using System;
 using System.Linq;
 using Windows.UI.Xaml;
@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkID=390556
 
-namespace ProgParty.WieBetaaltWat
+namespace ProgParty.WieBetaaltWat.Universal
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -34,8 +34,8 @@ namespace ProgParty.WieBetaaltWat
             _dataContext = e.Parameter as WieBetaaltWatDataContext;
             DataContext = _dataContext;
 
-            var storage = new Storage();
-            var param = new Api.Parameter.InvoerItemParameter();
+            var storage = new Storage.Storage();
+            var param = new ApiUniversal.Parameter.InvoerItemParameter();
             param.SingleList = _dataContext.Lijsten.SingleOrDefault(p => p.ProjectId.Equals(_dataContext.ProjectId.ToString()));
             param.LoginName = storage.LoadFromLocal(StorageKeys.LoggedInName)?.ToString() ?? string.Empty;
             param.LoginPassword = storage.LoadFromLocal(StorageKeys.LoggedInPassword)?.ToString() ?? string.Empty;
@@ -50,8 +50,8 @@ namespace ProgParty.WieBetaaltWat
         
         private void BetalingToevoegen_Click(object sender, RoutedEventArgs e)
         {
-            var storage = new Storage();
-            var param = new Api.Parameter.InvoerItemParameterPost();
+            var storage = new Storage.Storage();
+            var param = new ApiUniversal.Parameter.InvoerItemParameterPost();
             param.Amount = _totalAmount;
             param.Date = DateTime.Now;
             param.Description = Description.Text;
