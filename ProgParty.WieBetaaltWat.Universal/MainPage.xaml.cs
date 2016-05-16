@@ -33,14 +33,14 @@ namespace ProgParty.WieBetaaltWat.Universal
             {
                 Pivot = searchPivot,
                 AppName = "WieBetaaltWat",
-                Ad = new ConfigAd()
-                {
-                    AdHolder = AdHolder,
-                    AdApplicationId = "de76f64c-70b2-49d7-99b6-924257121127",
-                    SmallAdUnitId = "11569201",
-                    MediumAdUnitId = "11569200",
-                    LargeAdUnitId = "11569199"
-                }
+                //Ad = new ConfigAd()
+                //{
+                //    AdHolder = AdHolder,
+                //    AdApplicationId = "de76f64c-70b2-49d7-99b6-924257121127",
+                //    SmallAdUnitId = "11569201",
+                //    MediumAdUnitId = "11569200",
+                //    LargeAdUnitId = "11569199"
+                //}
             };
 
 #if DEBUG
@@ -89,6 +89,11 @@ namespace ProgParty.WieBetaaltWat.Universal
                 DataContext = PageDataContext = context;
 
             //Register.RegisterOnNavigatedTo(Config.Instance.LicenseInformation);
+
+            if (Config.Instance.LicenseInformation.ProductLicenses[InAppPurchase.TokenRemoveAdvertisement].IsActive)
+            {
+                AdHolder.Visibility = Visibility.Collapsed;
+            }
 
             searchPivot.SelectedIndex = 0;
             galleryList.SelectedItem = null;
@@ -177,6 +182,11 @@ namespace ProgParty.WieBetaaltWat.Universal
                 AddItemButton.Visibility = Visibility.Visible;
                 ConfigButton.Visibility = Visibility.Collapsed;
             }
+        }
+
+        private void Image_PointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(Shop));
         }
     }
 }

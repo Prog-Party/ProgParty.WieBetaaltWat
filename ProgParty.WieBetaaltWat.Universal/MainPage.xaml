@@ -283,7 +283,21 @@
         </Pivot>
         <Grid Name="AdHolder"
               Grid.Row="2"
-              Margin="0" />
+              Margin="0" >
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Border Margin="0" Grid.Row="0" Style="{StaticResource ButtonBorder}" >
+                <Button Click="BuyBarButton_Click" Background="#60351D" Foreground="White">
+                <StackPanel Orientation="Horizontal" >
+                    <Image Source="Assets/sale.png" Height="23"></Image>
+                    <TextBlock Text="Verwijder deze irritante banner, voor monies" Margin="10,0,0,0" />
+                </StackPanel>
+            </Button>
+        </Border>
+        <Image Grid.Row="1" Source="/Core/Assets/banner_Jens_Dennis.png" PointerReleased="Image_PointerReleased" />
+    </Grid>
     </Grid>
     <Page.BottomAppBar>
         <CommandBar x:Name="CommandBar" Background="#60351D">
