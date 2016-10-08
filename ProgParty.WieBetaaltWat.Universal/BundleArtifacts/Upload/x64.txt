@@ -1,0 +1,2 @@
+MainPackage=C:\Users\Jens\Documents\GitHub\ProgParty.WieBetaaltWat\ProgParty.WieBetaaltWat.Universal\bin\x64\Release\Upload\ProgParty.WieBetaaltWat.Universal_1.4.12.0_x64.appx
+SymbolPackage=C:\Users\Jens\Documents\GitHub\ProgParty.WieBetaaltWat\ProgParty.WieBetaaltWat.Universal\AppPackages\ProgParty.WieBetaaltWat.Universal_1.4.12.0\ProgParty.WieBetaaltWat.Universal_1.4.12.0_x64.appxsym
