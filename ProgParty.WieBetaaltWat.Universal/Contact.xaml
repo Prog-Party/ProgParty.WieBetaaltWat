@@ -50,6 +50,7 @@
                                Text="Help mee" />
                     <TextBlock Text="Geef een review! Hierdoor zal de app hoger in het app overzicht komen te staan. Zo zal men de app sneller kunnen vinden om vervolgende meer te kunnen WieBetaaltWat!" TextWrapping="Wrap" />
                     <TextBlock Text="Ook kan je hieronder een e-mail sturen naar ons. Bijvoorbeeld om aan te geven dat het design zo mooi is. Misschien ben je verliefd op ons... prima, laat het ons weten." TextWrapping="Wrap" />
+
                     <TextBlock Margin="0,10,0,0"
                                FontSize="25"
                                FontWeight="Bold"
