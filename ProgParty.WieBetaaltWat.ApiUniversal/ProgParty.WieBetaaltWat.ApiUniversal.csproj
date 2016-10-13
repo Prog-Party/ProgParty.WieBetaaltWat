@@ -109,6 +109,8 @@
   <ItemGroup>
     <Compile Include="Auth.cs" />
     <Compile Include="Authentication\LoginScrape.cs" />
+    <Compile Include="Authentication\WieBetaaltWatLogin.cs" />
+    <Compile Include="Authentication\WieBetaaltWatLoginUser.cs" />
     <Compile Include="Execute\InvoerItemExecute.cs" />
     <Compile Include="Execute\InvoerItemPostExecute.cs" />
     <Compile Include="Execute\LijstExecute.cs" />

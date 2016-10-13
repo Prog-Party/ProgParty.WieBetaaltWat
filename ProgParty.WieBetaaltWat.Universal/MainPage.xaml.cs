@@ -27,20 +27,17 @@ namespace ProgParty.WieBetaaltWat.Universal
 
             this.InitializeComponent();
 
+            if (Microsoft.Services.Store.Engagement.StoreServicesFeedbackLauncher.IsSupported())
+            {
+                FeedbackButton.Visibility = Visibility.Visible;
+            }
+
             NavigationCacheMode = NavigationCacheMode.Required;
 
             Config.Instance = new Config(this)
             {
                 Pivot = searchPivot,
                 AppName = "WieBetaaltWat",
-                //Ad = new ConfigAd()
-                //{
-                //    AdHolder = AdHolder,
-                //    AdApplicationId = "de76f64c-70b2-49d7-99b6-924257121127",
-                //    SmallAdUnitId = "11569201",
-                //    MediumAdUnitId = "11569200",
-                //    LargeAdUnitId = "11569199"
-                //}
             };
 
 #if DEBUG
@@ -87,8 +84,6 @@ namespace ProgParty.WieBetaaltWat.Universal
             var context = e.Parameter as WieBetaaltWatDataContext;
             if(context != null)
                 DataContext = PageDataContext = context;
-
-            //Register.RegisterOnNavigatedTo(Config.Instance.LicenseInformation);
 
             if (Config.Instance.LicenseInformation.ProductLicenses[InAppPurchase.TokenRemoveAdvertisement].IsActive)
             {
@@ -187,6 +182,12 @@ namespace ProgParty.WieBetaaltWat.Universal
         private void Image_PointerReleased(object sender, PointerRoutedEventArgs e)
         {
             Frame.Navigate(typeof(Shop));
+        }
+
+        private void FeedbackButton_Click(object sender, RoutedEventArgs e)
+        {
+            var launcher = Microsoft.Services.Store.Engagement.StoreServicesFeedbackLauncher.GetDefault();
+            launcher.LaunchAsync();
         }
     }
 }

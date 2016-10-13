@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace ProgParty.WieBetaaltWat.ApiUniversal.Authentication
@@ -52,23 +53,30 @@ namespace ProgParty.WieBetaaltWat.ApiUniversal.Authentication
             {
                 using (HttpClient client = new HttpClient(handler))
                 {
-                    client.DefaultRequestHeaders.Host = "www.wiebetaaltwat.nl";
+                    client.DefaultRequestHeaders.Host = "api.wiebetaaltwat.nl";
                     client.DefaultRequestHeaders.TryAddWithoutValidation("Accept", "text/html, application/xhtml+xml, image/jxr, */*");
                     client.DefaultRequestHeaders.TryAddWithoutValidation("Referer", "https://www.wiebetaaltwat.nl");
                     client.DefaultRequestHeaders.TryAddWithoutValidation("Accept-Language", "nl-NL,nl;q=0.8,en-GB;q=0.5,en;q=0.3");
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/42.0.2311.135 Safari/537.36 Edge/12.10240");
-                    client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/x-www-form-urlencoded");
+                    client.DefaultRequestHeaders.TryAddWithoutValidation("User-Agent", ": Mozilla/5.0 (Windows NT 10.0; WOW64; rv:49.0) Gecko/20100101 Firefox/49.0");
+                    //client.DefaultRequestHeaders.TryAddWithoutValidation("Content-Type", "application/x-www-form-urlencoded");
                     //client.DefaultRequestHeaders.TryAddWithoutValidation("Accept-Encoding", "gzip, deflate");
 
                     string uri = "https://www.wiebetaaltwat.nl";
 
-                    var content = new FormUrlEncodedContent(new[]
-                    {
-                        new KeyValuePair<string, string>("action", "login"),
-                        new KeyValuePair<string, string>("username", email),
-                        new KeyValuePair<string, string>("password", password),
-                        new KeyValuePair<string, string>("login_submit", "Inloggen")
-                    });
+                    //var content = new FormUrlEncodedContent(new[]
+                    //{
+                    //    new KeyValuePair<string, string>("action", "login"),
+                    //    new KeyValuePair<string, string>("username", email),
+                    //    new KeyValuePair<string, string>("password", password),
+                    //    new KeyValuePair<string, string>("login_submit", "Inloggen")
+                    //});
+
+                    var login = new WieBetaaltWatLogin();
+                    login.user = new WieBetaaltWatLoginUser() { email = email, password = password };
+                    //login.user = new WieBetaaltWatLoginUser() { email = "progparty@outlook.com", password = "qwerty15?" };
+
+                    var myJsonString = Newtonsoft.Json.JsonConvert.SerializeObject(login);
+                    var content = new StringContent(myJsonString, Encoding.UTF8, "application/json");
 
                     Task<HttpResponseMessage> response = client.PostAsync(uri, content);
 

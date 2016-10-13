@@ -270,27 +270,24 @@
                 </Grid>
             </PivotItem>
         </Pivot>
-        <Grid Name="AdHolder"
-              Grid.Row="2"
-              Margin="0" >
-            <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
-            </Grid.RowDefinitions>
-            <Border Margin="0" Grid.Row="0" Style="{StaticResource ButtonBorder}" >
-                <Button Click="BuyBarButton_Click" Background="#60351D" Foreground="White">
-                <StackPanel Orientation="Horizontal" >
-                    <Image Source="Assets/sale.png" Height="23"></Image>
-                    <TextBlock Text="Verwijder deze irritante banner, voor monies" Margin="10,0,0,0" />
-                </StackPanel>
-            </Button>
-        </Border>
-        <Image Grid.Row="1" Source="/Core/Assets/banner_Jens_Dennis.png" PointerReleased="Image_PointerReleased" />
-    </Grid>
+
+        <UI:AdControl x:Name="AdHolder"
+                      Grid.Row="1"
+                      Width="300"
+                      Height="50"
+                      HorizontalAlignment="Stretch"
+                      VerticalAlignment="Bottom"
+                      AdUnitId="10865270"
+                      ApplicationId="3f83fe91-d6be-434d-a0ae-7351c5a997f1" />
     </Grid>
     <Page.BottomAppBar>
         <CommandBar x:Name="CommandBar" Background="#60351D">
             <CommandBar.PrimaryCommands>
+                <AppBarButton x:Name="FeedbackButton"
+                              Click="FeedbackButton_Click"
+                              Content="&#xE939;"
+                              Icon="Message"
+                              Label="Feedback" />
                 <AppBarButton x:Name="BuyBarButton"
                               Click="BuyBarButton_Click"
                               Icon="Shop"
